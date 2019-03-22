@@ -9,7 +9,7 @@ pipeline {
 				}
             }
             steps {
-				sh '(cd ./PinaPoll/; mvn clean package)'
+				sh '(cd ./PinaPollSTS/; mvn clean package)'
 				stash name: "app", includes: "**"
             }
         }
@@ -22,8 +22,8 @@ pipeline {
             }
             steps {
 				unstash "app"
-				sh '(cd ./PinaPoll/; mvn clean test)'
-				sh '(cd ./PinaPoll/; mvn sonar:sonar \
+				sh '(cd ./PinaPollSTS/; mvn clean test)'
+				sh '(cd ./PinaPollSTS/; mvn sonar:sonar \
 				  -Dsonar.projectKey=Etiouse_PinaPoll \
 				  -Dsonar.organization=etiouse-github \
 				  -Dsonar.host.url=https://sonarcloud.io \
@@ -40,7 +40,7 @@ pipeline {
 			}
 			steps {
 				unstash "app"
-				sh 'java -jar ./PinaPoll/target/PinaPoll-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &' 
+				sh 'java -jar ./PinaPollSTS/target/PinaPollSTS-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &' 
 				sh 'sleep 30'
 				sh 'chmod +x ./runTest.sh'
 				sh './runTest.sh'
