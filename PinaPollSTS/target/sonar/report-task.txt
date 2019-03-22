@@ -1,7 +1,0 @@
-organization=etiouse-github
-projectKey=Etiouse_PinaPoll
-serverUrl=https://sonarcloud.io
-serverVersion=7.7.0.22487
-dashboardUrl=https://sonarcloud.io/dashboard?id=Etiouse_PinaPoll
-ceTaskId=AWlccXG71OjCByh5LMY5
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWlccXG71OjCByh5LMY5

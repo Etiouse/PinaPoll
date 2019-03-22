@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:insert="fragments/fragments.html :: header"/>
+	
+	<body>
+		
+		<div th:replace="fragments/fragments.html :: navigation"></div>
+		
+		<div class="container">
+	
+			<div class="starter-template">
+				<h1>Formulaire</h1>
+				
+				<div class="card">
+				  <div class="card-body">
+				    <form action="#" th:action="@{/color}" th:object="${color}" method="post">
+					    <div class="form-group">
+					    	<input type="text" th:field="*{r}" class="form-control" id="red" placeholder="Taux de rouge de la couleur">
+					    	<small id="redHelp" class="form-text text-muted">Inserer le taux de rouge</small>
+					    </div>
+					    
+					    <div class="form-group">
+					    	<input type="text" th:field="*{g}" class="form-control" id="green" placeholder="Taux de vert de la couleur">
+					    	<small id="greenHelp" class="form-text text-muted">Inserer le taux de vert</small>
+					    </div>
+					    
+					    <div class="form-group">
+					    	<input type="text" th:field="*{b}" class="form-control" id="blue" placeholder="Taux de bleu de la couleur">
+					    	<small id="blueHelp" class="form-text text-muted">Inserer le taux de bleu</small>
+					    </div>
+					    
+					   <div class="form-group">
+					    	<input type="text" th:field="*{a}" class="form-control" id="alpha" placeholder="Taux de transparence de la couleur">
+					    	<small id="alphaHelp" class="form-text text-muted">Inserer le taux de transparence</small>
+					    </div>
+						  
+					   <button type="submit" class="btn btn-primary">Submit</button>
+						  
+					</form>
+
+				</div>
+				
+			</div>
+	
+		</div>
+		</div>
+		
+		<div th:replace="fragments/fragments.html :: scripts"></div>
+		
+	</body>
+</html>
