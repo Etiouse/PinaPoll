@@ -1,0 +1,7 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Test Suite,Chrome 73.0.3683.86,,2019-03-22 09:00:17,2019-03-22 09:00:27,9.762s,PASSED
+,,,,,,
+Test Cases/Open Browser,Chrome 73.0.3683.86,,2019-03-22 09:00:17,2019-03-22 09:00:26,9.111s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.86,,2019-03-22 09:00:18,2019-03-22 09:00:24,5.782s,PASSED
+"navigateToUrl(""https://google.com/"")",Chrome 73.0.3683.86,,2019-03-22 09:00:24,2019-03-22 09:00:26,1.382s,PASSED
+closeBrowser(),Chrome 73.0.3683.86,,2019-03-22 09:00:26,2019-03-22 09:00:26,0.919s,PASSED

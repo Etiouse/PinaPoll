@@ -1,21 +1,59 @@
 pipeline {
-	agent any
-	stages {
-		stage('Build') {
-			steps {
-				echo 'Building'
+    agent any
+    stages {
+	
+        stage('Build') { 
+            agent {
+				docker {
+					image 'maven:3-alpine'
+				}
+            }
+            steps {
+				sh '(cd ./PinaPoll/; mvn clean package)'
+				stash name: "app", includes: "**"
+            }
+        }
+		
+		stage('QualityTest') { 
+            agent {
+				docker {
+					image 'maven:3-alpine'
+				}
+            }
+            steps {
+				unstash "app"
+				sh '(cd ./PinaPoll/; mvn clean test)'
+				sh '(cd ./PinaPoll/; mvn sonar:sonar \
+				  -Dsonar.projectKey=Etiouse_PinaPoll \
+				  -Dsonar.organization=etiouse-github \
+				  -Dsonar.host.url=https://sonarcloud.io \
+				  -Dsonar.login=db92ca8d9113b7779026b71167a7f3e391d048c8)'
 			}
-		}
-		stage('Test') {
-			steps {
-				echo 'Test'
+        }
+		
+        stage('IntegrationTest'){
+			agent{ 
+				docker{
+					image 'lucienmoor/katalon-for-jenkins:latest'
+					args '-p 8888:8080'
+				}
 			}
-		}
-		stage('Deploy') {
 			steps {
-				echo 'Deploy'
-			}
+				unstash "app"
+				sh 'java -jar ./PinaPoll/target/PinaPoll-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &' 
+				sh 'sleep 30'
+				sh 'chmod +x ./runTest.sh'
+				sh './runTest.sh'
+
+				cleanWs()
+		    }
+        }
+		
+    }
+	post {
+		always {
+			echo 'always clean up'
+			deleteDir()
 		}
 	}
 }
-
