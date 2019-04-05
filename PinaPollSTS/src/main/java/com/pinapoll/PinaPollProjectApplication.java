@@ -1,4 +1,4 @@
-package com.example.thymeleaf;
+package com.pinapoll;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

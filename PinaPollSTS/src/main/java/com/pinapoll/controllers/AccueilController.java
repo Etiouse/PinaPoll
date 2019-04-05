@@ -1,4 +1,4 @@
-package com.example.thymeleaf.controller;
+package com.pinapoll.controllers;
 
 import java.util.Map;
 
