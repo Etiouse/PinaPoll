@@ -1,30 +1,27 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-
-<head>
-	<title>Login</title>
-</head>
-
-<body>
-	<div th:insert="fragments/header :: header"></div>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Login</title>
+	</head>
 	
-	<div class="container pt-3">
-		<form th:action="@{/login}" method="POST" class="form-signin col-md-8 offset-md-2">
-			<h1 class="form-signin-heading" >Login</h3>
-			</h1>
-			
-			<input type="text" id="name" name="name"  th:placeholder="name" class="form-control" /> <br/> 
-			<input type="password"  th:placeholder="Password" id="password" name="password" class="form-control" /> <br /> 
-			
-			<div class="alert alert-danger" th:if="${param.error}">
-				Name or Password invalid, please verify
-			</div>
-			
-			<button class="btn btn-success" name="Submit" value="Login" type="Submit" th:text="Login"></button>
-			<a th:href="@{/registration}">Sign up</a>
-		</form>
-	</div>
-	
-</body>
+	<body>
+		<div th:insert="fragments/header :: header"></div>
+		
+		<div class="container pt-3">
+			<form th:action="@{/login}" method="POST" class="form-signin col-md-8 offset-md-2">
+				<h1 class="form-signin-heading" >Login</h1>
+				
+				<input type="text" id="name" name="name"  th:placeholder="name" class="form-control mt-3" />
+				<input type="password" th:placeholder="Password" id="password" name="password" class="form-control mt-3" />
+				
+				<div class="alert alert-danger" th:if="${param.error}">
+					Name or Password invalid, please verify
+				</div>
+				
+				<button class="btn btn-success mt-3" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+				<a th:href="@{/registration}" class="btn btn-outline-secondary mt-3">Sign up</a>
+			</form>
+		</div>
+		
+	</body>
 </html>
