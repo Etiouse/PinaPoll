@@ -12,26 +12,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "category")
+@Table(name = "poll")
 public class Poll {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "category_id")
-    private Integer categoryId;
+    @Column(name = "id_poll")
+    private Integer idPoll;
 	
-	@Column(name = "is_public")
+	@Column(name = "public")
 	private Boolean isPublic;
 	
 	@Column(name = "closing_date")
 	private Date closingDate;
 	
+	@Column(name = "closed")
+	private Boolean isClosed;
+	
 	@Column(name = "question")
 	private String question;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poll")
+	private List<Response> responses;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id")
+	@JoinColumn(name = "id_category")
 	private Category category;
 }
