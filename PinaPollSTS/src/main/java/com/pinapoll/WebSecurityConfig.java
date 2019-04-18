@@ -31,8 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private String rolesQuery;
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth)
-			throws Exception {
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.
 			jdbcAuthentication()
 				.usersByUsernameQuery(usersQuery)
@@ -46,21 +45,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		//RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 		
-		http.
-		authorizeRequests()
-			.antMatchers("/").permitAll()
-			.antMatchers("/login").permitAll()
-			.antMatchers("/registration").permitAll()
-			.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-			.authenticated().and().csrf().disable().formLogin()
-			.loginPage("/login").failureUrl("/login?error=true")
-			.defaultSuccessUrl("/admin/home",true)
-			.usernameParameter("name")
-			.passwordParameter("password")
-			.and().logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/").and().exceptionHandling()
-			.accessDeniedPage("/access-denied");
+		http. 
+			authorizeRequests()
+				.antMatchers("/").permitAll()
+				.antMatchers("/login").permitAll()
+				.antMatchers("/registration").permitAll()
+				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+				.authenticated().and().csrf().disable().formLogin()
+				.loginPage("/login").failureUrl("/login?error=true")
+				.defaultSuccessUrl("/admin/home",true)
+				.usernameParameter("name")
+				.passwordParameter("password")
+				.and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/").and().exceptionHandling()
+				.accessDeniedPage("/access-denied");
 	}
 	
 	
@@ -76,16 +75,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    SimpleUrlAuthenticationSuccessHandler handler = new SimpleUrlAuthenticationSuccessHandler();
 	    handler.setUseReferer(true);
 	    
-	    
-	 
 	    return handler;
 	}
 	
 	 @Bean
-	    public BCryptPasswordEncoder passwordEncoder() {
-	        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-	        return bCryptPasswordEncoder;
-	    }
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
 	
 
 
