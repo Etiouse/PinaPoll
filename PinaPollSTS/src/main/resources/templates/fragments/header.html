@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="header">
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -10,18 +10,23 @@
 <body>
 	<div>
 
-		<!-- this is header -->
-		<nav class="navbar navbar-inverse">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/}">Spring Boot</a>
-				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class="active"><a th:href="@{/}">Home</a></li>
-					</ul>
-				</div>
-			</div>
+		<!-- this is header --> 
+		<nav class="navbar navbar-dark bg-dark">
+			<a class="navbar-brand" href="#" >PinaPoll</a>
+			<form class="form-inline">
+			
+				<!-- If not connected -->
+				<button class="btn btn-success m-2 my-sm-0" type="submit">Login</button>
+				<a href="#">Sign up</a>
+				
+				<!-- If connected -->
+					<!-- If not admin -->
+					<button class="btn btn-primary m-2 my-sm-0" type="submit">Username</button>
+					<!-- If admin -->
+					<button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button>
+					
+					<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+			</form>
 		</nav>
 	</div>
 

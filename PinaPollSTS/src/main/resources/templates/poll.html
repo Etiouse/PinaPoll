@@ -8,25 +8,7 @@
 		<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<!--<div th:insert="fragments/header :: header"></div>-->
-		
-		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand">PinaPoll</a>
-			<form class="form-inline">
-			
-				<!-- Not connected -->
-				<button class="btn btn-success m-2 my-sm-0" type="submit">Login</button>
-				<a href="#">Sign up</a>
-				
-				<!-- Connected -->
-				<button class="btn btn-primary m-2 my-sm-0" type="submit">Username</button>
-				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
-				
-				<!-- Admin -->
-				<button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button>
-				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
-			</form>
-		</nav>
+		<div th:insert="fragments/header :: header"></div>
 		
 		<div class="container pt-3">
 			<h1>Poll title</h1>
@@ -37,7 +19,6 @@
 				<div class="p-0 col-12 col-md-6 col-lg-4">
 					<canvas class="border rounded w-100" width="100px" height="100px"></canvas>
 				</div>
-				
 				
 				<!-- Answers -->
 				<div class="col-12 col-md-6 col-lg-8">
