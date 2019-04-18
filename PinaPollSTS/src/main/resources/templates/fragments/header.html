@@ -4,20 +4,18 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
 </head>
 <body>
 	<div>
 
 		<!-- this is header --> 
 		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand" href="#" >PinaPoll</a>
+			<a class="navbar-brand" th:href="@{/}" >PinaPoll</a>
 			<form class="form-inline">
 			
 				<!-- If not connected -->
-				<button class="btn btn-success m-2 my-sm-0" type="submit">Login</button>
-				<a href="#">Sign up</a>
+				<a th:href="@{/login}" class="btn btn-success m-2 my-sm-0">Login</a>
+				<a th:href="@{/registration}">Sign up</a>
 				
 				<!-- If connected -->
 					<!-- If not admin -->
