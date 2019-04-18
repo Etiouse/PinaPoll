@@ -1,16 +1,80 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-	<title>Spring Security Tutorial</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <div th:insert="fragments/header :: header"></div>
-    <div class="container">
-    	<p>Get your greeting <a href="/admin/home">here</a></p>
-    </div>
-    <div th:insert="fragments/footer :: footer"></div>
-</body>
+	<head>
+		<title>PinaPoll</title>
+		<!-- <link rel="stylesheet" href="style.css"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<!--<div th:insert="fragments/header :: header"></div>-->
+		
+		<nav class="navbar navbar-dark bg-dark">
+			<a class="navbar-brand">PinaPoll</a>
+			<form class="form-inline">
+			
+				<!-- Not connected -->
+				<button class="btn btn-success m-2 my-sm-0" type="submit">Login</button>
+				<a href="#">Sign up</a>
+				
+				<!-- Connected -->
+				<button class="btn btn-primary m-2 my-sm-0" type="submit">Username</button>
+				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+				
+				<!-- Admin -->
+				<button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button>
+				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+			</form>
+		</nav>
+		
+		<div class="container pt-3">
+			<!-- Search Bar -->
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Enter a poll name..." aria-label="Recipient's username">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="button" >Search</button>
+				</div>
+			</div>
+			
+			<!-- Polls list -->
+			<h1>All polls</h1>
+			<hr/>
+			
+			<div class="card-columns">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Poll title</h5>
+						<!-- CHART PREVIEW -->
+						<canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas>
+						<button class="btn btn-sm btn-outline-primary w-100" type="button">Show poll</button>
+					</div>
+				</div>
+				
+				<!-- For admin or owner -->
+				<div class="card">
+					<div class="card-body">
+						<!-- Delete button X -->
+						<a href="#" class="close" ><span style="color: red">&times;</span></a>
+						
+						<h5 class="card-title">Poll title</h5>
+						<!-- CHART PREVIEW -->
+						<canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas>
+						<button class="btn btn-sm btn-outline-primary w-100" type="button">Show poll</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Pagination -->
+			<nav>
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				</ul>
+			</nav>
+		</div>
+	</body>
 </html>
