@@ -9,15 +9,21 @@
 	<div>
 		<!-- this is header --> 
 		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand" href="/" >PinaPoll</a>
+			<a class="navbar-brand" th:href="@{/}" >PinaPoll</a>
+			<form class="form-inline">
 			
-			<!-- If not connected -->
-			<form action="/login">
-		    	<button type="submit" class="btn btn-success m-2 my-sm-0">Login</button>
-		    </form>
-		    <form action="/registration">
-		    	<button type="submit" class="btn btn-primary m-2 my-sm-0">Sign up</button>
-		    </form>
+				<!-- If not connected -->
+				<a th:href="@{/login}" class="btn btn-success m-2 my-sm-0">Login</a>
+				<a th:href="@{/registration}">Sign up</a>
+				
+				<!-- If connected -->
+					<!-- If not admin -->
+					<button class="btn btn-primary m-2 my-sm-0" type="submit">Username</button>
+					<!-- If admin -->
+					<button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button>
+					
+					<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+			</form>
 		</nav>
 	</div>
 </body>
