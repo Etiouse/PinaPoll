@@ -22,7 +22,6 @@ public class LoginController {
    @Autowired
     private UserService userService;
 	   
-	   
 	@RequestMapping(value= {"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -70,10 +69,5 @@ public class LoginController {
 		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
-	}
-	
-	public int add(int a, int b)
-	{
-		return a+b;
 	}
 }

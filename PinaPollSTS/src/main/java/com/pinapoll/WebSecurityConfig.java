@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		//RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 		
-		http. 
+		/*http. 
 			authorizeRequests()
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/access-denied");
+				.accessDeniedPage("/access-denied");*/
 	}
 	
 	
