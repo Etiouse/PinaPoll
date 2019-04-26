@@ -29,9 +29,8 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	
     @GetMapping(value="/registration")
-    public ModelAndView registration(){
+    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
