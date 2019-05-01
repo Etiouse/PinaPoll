@@ -8,47 +8,52 @@ import org.springframework.stereotype.Service;
 import com.pinapoll.models.Poll;
 import com.pinapoll.repositories.PollRepository;
 
+import net.bytebuddy.asm.Advice.Return;
+
 @Service("pollService")
 public class PollServiceImpl implements PollService {
 	
 	@Autowired
-	PollRepository pollRepository;
+	private PollRepository pollRepository;
 
 	@Override
 	public Poll getPoll(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	@Override
 	public List<Poll> getPublicPoll() {
-		// TODO Auto-generated method stub
+		//return pollRepository.findByIsPublic(pageable)
 		return null;
 	}
 
 	@Override
 	public List<Poll> getPollsWithCategoryId(int categoryId) {
-		// TODO Auto-generated method stub
-		return null;
+		return pollRepository.findByCategory(categoryId);
 	}
 
 	@Override
-	public List<Poll> getPollsWithTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Poll> getPollsWithQuestion(String question) {
+		return pollRepository.findByQuestion(question);
 	}
 
 	@Override
-	public void saveCategory() {
+	public void savePoll(Poll poll) {
 		// TODO Auto-generated method stub
-		
+		pollRepository.save(poll);
 	}
 
 	@Override
 	public List<Poll> getAll() {
 		return pollRepository.findAll();
 	}
-	
-	
+
+	@Override
+	public Poll getPollWithUser(int userId) {
+		// TODO Auto-generated method stub
+		return pollRepository.findByUser(userId);
+	}
 
 }

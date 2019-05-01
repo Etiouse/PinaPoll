@@ -10,7 +10,7 @@ import com.pinapoll.repositories.CategoryRepository;
 public class CategoryServiceImpl implements CategoryService{
 
 	@Autowired
-	CategoryRepository categoryRepository;
+	private CategoryRepository categoryRepository;
 
 	@Override
 	public Category getCategory(int id) {
