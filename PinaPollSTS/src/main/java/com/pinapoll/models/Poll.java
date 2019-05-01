@@ -1,5 +1,6 @@
 package com.pinapoll.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,7 +40,7 @@ public class Poll {
 	@Column(name = "question")
 	private String question;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poll")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poll", cascade = CascadeType.ALL)
 	private List<Response> responses;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

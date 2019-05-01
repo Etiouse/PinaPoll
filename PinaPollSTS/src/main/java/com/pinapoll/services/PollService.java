@@ -15,5 +15,6 @@ public interface PollService {
 	public List<Poll> getPollsWithCategory(Category category);
 	public List<Poll> getPollsWithQuestion(String question);
 	public void savePoll(Poll poll);
+	public void deletePoll(Poll poll);
 	
 }

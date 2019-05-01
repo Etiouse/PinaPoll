@@ -1,6 +1,6 @@
 package com.pinapoll.models;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +20,7 @@ public class Response {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "response_id")
     private Integer id;
 	
 	@Column(name = "description")
@@ -33,8 +33,8 @@ public class Response {
 	@JoinColumn(name = "poll")
 	private Poll poll;
 	
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "responses")
-    private Set<User> users;
+	@OneToMany(mappedBy = "response", cascade = CascadeType.ALL)
+	private List<UserResponse> userResponses;
 	
 	public Integer getId() {
 		return id;
@@ -68,12 +68,12 @@ public class Response {
 		this.poll = poll;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public List<UserResponse> getUserResponses() {
+		return userResponses;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setUserResponses(List<UserResponse> userResponses) {
+		this.userResponses = userResponses;
 	}
 
 }

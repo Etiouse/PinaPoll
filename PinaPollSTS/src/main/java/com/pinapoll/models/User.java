@@ -41,16 +41,15 @@ public class User {
     @Column(name = "active")
 	private int active;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Poll> polls;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<UserResponse> userResponses;
     
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_response", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_response"))
-	private Set<Response> responses;
 	
 	public Integer getId() {
 		return id;
