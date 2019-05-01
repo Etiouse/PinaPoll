@@ -81,7 +81,6 @@ public class PollController {
             		Response r = new Response();
                 	r.setDescription(resp);
                 	r.setPoll(poll);
-                	System.out.println("weh");
                 	responseService.saveResponse(r);
             	}
             }
@@ -92,35 +91,6 @@ public class PollController {
         
         return modelAndView;
     }
-    
-    /*
-    @PostMapping(value = "/poll/create")
-    public ModelAndView createNewPoll(@Valid Poll poll, BindingResult bindingResult, Authentication authentication) {
-    	
-    	// Model and View
-        ModelAndView modelAndView = new ModelAndView();
-        
-        User user = userService.findUserByName(authentication.getName());
-        poll.setUser(user);
-        
-        
-        // Name controls
-        if (poll.getQuestion().equals("")) {
-        	bindingResult.rejectValue("question", "error.poll", "* You must enter a question");
-        }
-
-        // Routing
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("poll-creation");
-        } else {
-            pollService.savePoll(poll);
-            modelAndView.addObject("poll", new Poll());
-            modelAndView.setViewName("redirect:/user/" + user.getName());
-        }
-        
-        return modelAndView;
-    }
-    */
     
     @GetMapping("/poll/{id}")
     public ModelAndView detailPoll(Model model, @PathVariable("id") int id, Authentication authentication) {
