@@ -1,13 +1,20 @@
 package com.pinapoll.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.pinapoll.models.Poll;
 import com.pinapoll.models.User;
+import com.pinapoll.services.PollService;
+import com.pinapoll.services.PollServiceImpl;
 import com.pinapoll.services.UserService;
 
 @Controller
@@ -16,10 +23,19 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private PollServiceImpl pollService;
+	
+	
     
     @GetMapping("/")
-    public String home() {
-        return "index";
+    public ModelAndView home() {
+        
+    	ModelAndView modelAndView = new ModelAndView();
+        List<Poll> polls = pollService.getAll();
+        modelAndView.addObject("polls", polls);
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
     
     @GetMapping("/add")

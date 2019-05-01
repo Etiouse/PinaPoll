@@ -9,20 +9,25 @@
     <div>
         <!-- this is header --> 
         <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" th:href="@{/}" >PinaPoll</a>
+            <a class="navbar-brand p-0 mt-2" href="/">
+            	<span class="text-warning">PinaPoll</span>
+				<img th:src="@{/favicon.png}" width="30px" height="30px" class="img-fluid pb-nav-logo mb-2" alt="PinaPoll"/>
+	        </a>
             <form class="form-inline">
             
                 <!-- If not connected -->
-                <a th:href="@{/registration}" class="m-2 my-sm-0" sec:authorize="!isAuthenticated()">Sign up</a>
-                <a th:href="@{/login}" class="btn btn-success" sec:authorize="!isAuthenticated()">Login</a>
+                <a th:href="@{/registration}" class="m-2 my-sm-0 text-warning" sec:authorize="!isAuthenticated()">Sign up</a>
+                <a th:href="@{/login}" class="btn btn-warning" sec:authorize="!isAuthenticated()">Login</a>
                 
                 <!-- If connected -->
                     <!-- If not admin -->
-                    <a th:href="@{/user/} + ${#authentication.getPrincipal().getUsername()}" class="m-2 btn btn-primary my-sm-0" th:text="${#authentication.getPrincipal().getUsername()}" sec:authorize="isAuthenticated()"></a>
+                    <a th:href="@{/user/} + ${#authentication.getPrincipal().getUsername()}" class="m-2 btn btn-warning my-sm-0" th:text="${#authentication.getPrincipal().getUsername()}" sec:authorize="isAuthenticated()"></a>
                     <!-- If admin -->
                     <!-- <button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button> -->
                     
-                <a class="btn btn-danger my-2 my-sm-0" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+                <a class="btn btn-danger my-2 my-sm-0" th:href="@{/logout}" sec:authorize="isAuthenticated()">
+                	<img th:src="@{/logout.png}" width="20px" height="20px" alt="Logout"/>
+				</a>
             </form>
         </nav>
     </div>
