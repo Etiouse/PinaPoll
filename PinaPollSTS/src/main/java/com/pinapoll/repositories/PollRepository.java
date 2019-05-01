@@ -14,6 +14,8 @@ public interface PollRepository extends JpaRepository<Poll, Integer> {
 	
 	Optional<Poll> findById(Integer id);
 	
+	Poll findByUser(Integer userId);
+	
 	List<Poll> findAll(); 
 	
 	List<Poll> findByIsPublic(boolean isPublic, Pageable pageable);

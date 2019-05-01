@@ -12,7 +12,7 @@ import com.pinapoll.repositories.ResponseRepository;
 public class ResponseServiceImpl implements ResponseService{
 
 	@Autowired
-	ResponseRepository responseRepository;
+	private ResponseRepository responseRepository;
 
 	@Override
 	public List<Response> getResponsesForPoll(int pollId) {
