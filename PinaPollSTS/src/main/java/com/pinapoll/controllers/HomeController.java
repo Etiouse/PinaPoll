@@ -3,10 +3,14 @@ package com.pinapoll.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.directory.SearchControls;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,9 +37,22 @@ public class HomeController {
         
     	ModelAndView modelAndView = new ModelAndView();
         List<Poll> polls = pollService.getAll();
+        User user = new User();
+        user.setName("COUCOU");
         modelAndView.addObject("polls", polls);
+        modelAndView.addObject("user", user);
         modelAndView.setViewName("index");
         return modelAndView;
+    }
+    
+    @GetMapping("/search/{name}")
+    public ModelAndView search(@PathVariable("name") String name)
+    {
+    	ModelAndView modelAndView = new ModelAndView();
+    	List<User> users = userService.searchUserWithName(name);
+    	modelAndView.addObject("users", users);
+        modelAndView.setViewName("index");
+    	return modelAndView;
     }
     
     @GetMapping("/add")

@@ -3,6 +3,7 @@ package com.pinapoll.services;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -43,6 +44,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Iterable<User> findAll() {
 		return userRepository.findAll();
+	}
+
+	@Override
+	public List<User> searchUserWithName(String name) {
+		return userRepository.findByNameContaining(name);
 	}
 
 }

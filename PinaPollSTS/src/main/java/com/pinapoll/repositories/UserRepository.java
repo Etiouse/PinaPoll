@@ -1,5 +1,7 @@
 package com.pinapoll.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +11,8 @@ import com.pinapoll.models.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 	User findByName(String name);
 	User findByEmail(String email);
+	List<User> findByNameContaining(String name);
+	
+	//@Query("SELECT * FROM User WHERE name LIKE '%:name%")
+	//List<Response> findUserResponseForPoll(@Param("name") String name);
 }
