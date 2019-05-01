@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Username</title>
+		<title th:text="${user.name}">Username</title>
 	</head>
 	<body>
 		<div th:insert="fragments/header :: header"></div>
@@ -9,34 +9,23 @@
 		<div class="container pt-3">
 
 			<!-- Polls list -->
-			<h1>Username's polls</h1>
+			<h1 th:text="${user.name}">Username's polls</h1>
 			<hr/>
 			
-			<a href="#" class="btn btn-success">Create poll</a>
+			<a href="#" class="btn btn-success mb-3">Create poll</a>
 			
 			<div class="card-columns">
-				<div class="card">
+				<div class="card" th:each="poll: ${polls}">
 					<div class="card-body">
-						<h5 class="card-title">Poll title</h5>
-						<!-- CHART PREVIEW -->
-						<canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas>
-						<button class="btn btn-sm btn-outline-primary w-100" type="button">Show poll</button>
-					</div>
-				</div>
-				
-				<!-- For admin or owner -->
-				<div class="card">
-					<div class="card-body">
-						<!-- Delete button X -->
 						<a href="#" class="close" ><span style="color: red">&times;</span></a>
-						
-						<h5 class="card-title">Poll title</h5>
+						<h5 class="card-title" th:text="${poll.question}"> Question </h5>
 						<!-- CHART PREVIEW -->
-						<canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas>
-						<button class="btn btn-sm btn-outline-primary w-100" type="button">Show poll</button>
+						<!--   <canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas> -->
+						<a th:href="@{/poll/} + ${poll.id}" class="btn btn-sm btn-outline-primary w-100">Show poll</a>
 					</div>
-				</div>
+				</div>				
 			</div>
+			
 		</div>
 	</body>
 </html>

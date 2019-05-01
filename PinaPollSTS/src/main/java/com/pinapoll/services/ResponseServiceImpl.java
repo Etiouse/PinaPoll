@@ -17,8 +17,7 @@ public class ResponseServiceImpl implements ResponseService{
 
 	@Override
 	public List<Response> getResponsesForPoll(Poll poll) {
-		// TODO Auto-generated method stub
-		return null;
+		return responseRepository.findByPoll(poll);
 	}
 
 	@Override

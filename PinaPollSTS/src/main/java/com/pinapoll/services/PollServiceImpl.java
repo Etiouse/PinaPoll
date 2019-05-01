@@ -19,7 +19,7 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public Poll getPoll(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return pollRepository.findById(id).get();
 	}
 	
 	@Override
