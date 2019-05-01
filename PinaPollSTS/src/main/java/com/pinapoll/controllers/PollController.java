@@ -84,4 +84,21 @@ public class PollController {
         return modelAndView;
     }
     
+    @GetMapping("/poll/delete/{id}")
+    public ModelAndView deletePoll(Model model, @PathVariable("id") int id, Authentication authentication) {
+    	
+    	// Model and View
+        ModelAndView modelAndView = new ModelAndView();
+        
+        User user = userService.findUserByName(authentication.getName());
+        Poll poll = pollService.getPoll(id);
+        
+        if(user.getName().equals(poll.getUser().getName())) {
+        	pollService.deletePoll(poll);
+        }
+
+        modelAndView.setViewName("redirect:/user/" + user.getName());
+        return modelAndView;
+    }
+    
 }

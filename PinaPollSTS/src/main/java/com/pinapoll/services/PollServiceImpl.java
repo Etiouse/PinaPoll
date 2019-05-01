@@ -49,6 +49,11 @@ public class PollServiceImpl implements PollService {
 		// TODO Auto-generated method stub
 		pollRepository.save(poll);
 	}
+	
+	@Override
+	public void deletePoll(Poll poll) {
+		pollRepository.delete(poll);
+	}
 
 	@Override
 	public List<Poll> getAll() {
