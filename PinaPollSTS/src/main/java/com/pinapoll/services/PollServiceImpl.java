@@ -22,7 +22,12 @@ public class PollServiceImpl implements PollService {
 		return null;
 	}
 	
-
+	@Override
+	public List<Poll> getPollWithUser(int userId) {
+		// TODO Auto-generated method stub
+		return pollRepository.findByUser(userId);
+	}
+	
 	@Override
 	public List<Poll> getPublicPoll() {
 		//return pollRepository.findByIsPublic(pageable)
@@ -48,12 +53,6 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<Poll> getAll() {
 		return pollRepository.findAll();
-	}
-
-	@Override
-	public Poll getPollWithUser(int userId) {
-		// TODO Auto-generated method stub
-		return pollRepository.findByUser(userId);
 	}
 
 }
