@@ -29,9 +29,10 @@ public class UserController {
     	ModelAndView modelAndView = new ModelAndView();
     	
     	User user = userService.findUserByName(name);
-    	//List<Poll> polls = pollService.
+    	List<Poll> polls = pollService.getPollWithUser(user);
     	
         modelAndView.addObject("user", user);
+        modelAndView.addObject("polls", polls);
         modelAndView.setViewName("profile");
         return modelAndView;
     }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pinapoll.models.Poll;
+import com.pinapoll.models.User;
 import com.pinapoll.repositories.PollRepository;
 
 import net.bytebuddy.asm.Advice.Return;
@@ -23,9 +24,9 @@ public class PollServiceImpl implements PollService {
 	}
 	
 	@Override
-	public List<Poll> getPollWithUser(int userId) {
+	public List<Poll> getPollWithUser(User user) {
 		// TODO Auto-generated method stub
-		return pollRepository.findByUser(userId);
+		return pollRepository.findByUser(user);
 	}
 	
 	@Override
