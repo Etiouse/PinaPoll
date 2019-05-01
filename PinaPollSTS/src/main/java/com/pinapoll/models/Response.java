@@ -20,17 +20,17 @@ public class Response {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "id_response")
-    private Integer idResponse;
+    @Column(name = "id")
+    private Integer id;
 	
 	@Column(name = "description")
 	private String description;
 	
 	@Column(name = "checked")
-	private Boolean isChecked;
+	private Boolean checked;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_poll")
+	@JoinColumn(name = "poll")
 	private Poll poll;
 	
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "responses")

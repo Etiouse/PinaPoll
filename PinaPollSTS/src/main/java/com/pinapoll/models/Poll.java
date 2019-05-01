@@ -20,17 +20,17 @@ public class Poll {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "id_poll")
-    private Integer idPoll;
+    @Column(name = "id")
+    private Integer id;
 	
 	@Column(name = "public")
-	private Boolean isPublic;
+	private Boolean Public;
 	
 	@Column(name = "closing_date")
 	private Date closingDate;
 	
 	@Column(name = "closed")
-	private Boolean isClosed;
+	private Boolean closed;
 	
 	@Column(name = "question")
 	private String question;
@@ -39,6 +39,6 @@ public class Poll {
 	private List<Response> responses;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_category")
+	@JoinColumn(name = "category")
 	private Category category;
 }

@@ -17,8 +17,8 @@ public class Category {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "id_category")
-    private Integer idCategory;
+    @Column(name = "id")
+    private Integer id;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
 	private List<Poll> polls;
