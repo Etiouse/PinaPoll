@@ -30,10 +30,6 @@ public class User {
     @Column(name = "password")
     @NotEmpty(message = "*Please provide a password")
     private String password;
-    
-    @Column(name = "passwordConfirmation")
-    @NotEmpty(message = "*Please provide a password confirmation")
-    private String passwordConfirmation;
 
     @Column(name = "email")
     @NotEmpty(message = "*Please provide an email")
@@ -81,18 +77,10 @@ public class User {
 		return password;
 	}
 	
-	public String getPasswordConfirmation() {
-		return passwordConfirmation;
-	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
-	public void setPasswordConfirmation(String passwordConfirmation) {
-		this.passwordConfirmation = passwordConfirmation;
-	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}

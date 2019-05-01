@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org" th:fragment="header">
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-		<!-- this is header --> 
-		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand" th:href="@{/}" >PinaPoll</a>
-			<form class="form-inline">
-			
-				<!-- If not connected -->
-				<a th:href="@{/login}" class="btn btn-success m-2 my-sm-0">Login</a>
-				<a th:href="@{/registration}">Sign up</a>
-				
-				<!-- If connected -->
-					<!-- If not admin -->
-					<button class="btn btn-primary m-2 my-sm-0" type="submit">Username</button>
-					<!-- If admin -->
-					<button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button>
-					
-					<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
-			</form>
-		</nav>
-	</div>
+    <div>
+        <!-- this is header --> 
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" th:href="@{/}" >PinaPoll</a>
+            <form class="form-inline">
+            
+                <!-- If not connected -->
+                <a th:href="@{/registration}" class="m-2 my-sm-0" sec:authorize="!isAuthenticated()">Sign up</a>
+                <a th:href="@{/login}" class="btn btn-success" sec:authorize="!isAuthenticated()">Login</a>
+                
+                <!-- If connected -->
+                    <!-- If not admin -->
+                    <a th:href="@{/user/} + ${#authentication.getPrincipal().getUsername()}" class="m-2 btn btn-primary my-sm-0" th:text="${#authentication.getPrincipal().getUsername()}" sec:authorize="isAuthenticated()"></a>
+                    <!-- If admin -->
+                    <!-- <button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button> -->
+                    
+                <a class="btn btn-danger my-2 my-sm-0" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+            </form>
+        </nav>
+    </div>
 </body>
 </html>
