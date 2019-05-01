@@ -2,6 +2,7 @@ package com.pinapoll.services;
 
 import java.util.List;
 
+import com.pinapoll.models.Category;
 import com.pinapoll.models.Poll;
 import com.pinapoll.models.User;
 
@@ -11,7 +12,7 @@ public interface PollService {
 	public List<Poll> getPollWithUser(User user);
 	public List<Poll> getAll();
 	public List<Poll> getPublicPoll();
-	public List<Poll> getPollsWithCategoryId(int categoryId);
+	public List<Poll> getPollsWithCategory(Category category);
 	public List<Poll> getPollsWithQuestion(String question);
 	public void savePoll(Poll poll);
 	
