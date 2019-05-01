@@ -1,6 +1,7 @@
 package com.pinapoll.controllers;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.validation.Valid;
 
@@ -17,24 +18,26 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pinapoll.models.Poll;
 import com.pinapoll.models.Response;
 import com.pinapoll.models.User;
-import com.pinapoll.services.PollService;
 import com.pinapoll.services.PollServiceImpl;
 import com.pinapoll.services.ResponseServiceImpl;
-import com.pinapoll.services.UserService;
+import com.pinapoll.services.UserServiceImpl;
 
 
 @Controller
 public class PollController {
 
 	@Autowired
+    private UserServiceImpl userService;
+	
+	@Autowired
     private PollServiceImpl pollService;
 	
 	@Autowired
     private ResponseServiceImpl responseService;
 	
-    @GetMapping("/create")
+    @GetMapping("/poll/create")
     public ModelAndView pollCreation() {
-        
+
     	ModelAndView modelAndView = new ModelAndView();
         Poll poll = new Poll();
         modelAndView.addObject("poll", poll);
@@ -42,10 +45,30 @@ public class PollController {
         return modelAndView;
     }
     
-    @PostMapping(value = "/create")
-    public String createNewPoll(@Valid Poll poll, BindingResult bindingResult) {
+    @PostMapping(value = "/poll/create")
+    public ModelAndView createNewPoll(@Valid Poll poll, BindingResult bindingResult, Authentication authentication) {
     	
-        return "poll-creation";
+    	// Model and View
+        ModelAndView modelAndView = new ModelAndView();
+        
+        User user = userService.findUserByName(authentication.getName());
+        poll.setUser(user);
+        
+        // Name controls
+        if (poll.getQuestion().equals("")) {
+        	bindingResult.rejectValue("question", "error.poll", "* You must enter a question");
+        }
+
+        // Routing
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("poll-creation");
+        } else {
+            pollService.savePoll(poll);
+            modelAndView.addObject("poll", new Poll());
+            modelAndView.setViewName("redirect:/user/" + user.getName());
+        }
+        
+        return modelAndView;
     }
     
     @GetMapping("/poll/{id}")

@@ -9,7 +9,7 @@
 		<div th:insert="fragments/header :: header"></div>
 		
 	   <div class="container pt-3">
-	      <form  id="create-poll" autocomplete="off" action="#" th:action="@{/create}"
+	      <form  id="create-poll" autocomplete="off" th:action="@{/poll/create}"
 	            th:object="${poll}" method="post" class="form-signin col-md-8 offset-md-2"
 	            role="form">
 	        <h1>Create a poll</h1>
