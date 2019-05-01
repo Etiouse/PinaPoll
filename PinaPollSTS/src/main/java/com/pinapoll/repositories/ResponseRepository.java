@@ -12,7 +12,10 @@ import com.pinapoll.models.Response;
 @Repository("responseRepository")
 public interface ResponseRepository extends JpaRepository<Response, Integer> {
 	
-	List<Response> findByPoll(Poll poll);
+	List<Response> findByPoll(Integer pollId);
+	
+	
+	// TODO :
 	
 	//@Query("SELECT u.tags FROM User u WHERE u.id = :id") // TODO
 	//List<Response> findUserResponseForPoll(@Param("user_id") int userId, @Param("poll_id") int pollId);

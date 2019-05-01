@@ -2,6 +2,9 @@ package com.pinapoll.services;
 
 import com.pinapoll.models.Category;
 
-public class CategoryService {
-
+public interface CategoryService {
+	
+	public Category getCategory(int id);
+	public void saveCategory(Category category);
+	
 }
