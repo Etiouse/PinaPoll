@@ -14,13 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pinapoll.models.User;
+import com.pinapoll.repositories.UserRepository;
 import com.pinapoll.services.UserService;
+
+import java.util.regex.Pattern;
 
 @Controller
 public class LoginController {
 	
-   @Autowired
+    @Autowired
     private UserService userService;
+    
+    @Autowired
+    private UserRepository userRepository;
 	   
 	@RequestMapping(value= {"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
@@ -29,9 +35,8 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	
     @GetMapping(value="/registration")
-    public ModelAndView registration(){
+    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
@@ -41,13 +46,45 @@ public class LoginController {
     
     @PostMapping(value = "/registration")
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    	
+    	// Model and View
         ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByName(user.getName());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the name provided");
+        
+        // Name controls
+        User userNameExists = userService.findUserByName(user.getName());
+        if (userNameExists != null) {
+            bindingResult.rejectValue("name", "error.user", "*Name already taken");
         }
+        if (user.getName().length() < 4 && user.getName().length() != 0) {
+        	bindingResult.rejectValue("name", "error.user", "*Name must contains at least 4 characters");
+        }
+        if (user.getName().length() > 20 && user.getName().length() != 0) {
+        	bindingResult.rejectValue("name", "error.user", "*Name must contains a maximum of 20 characters");
+        }
+        
+        // Email controls
+        User userMailExists = userRepository.findByEmail(user.getEmail());
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$"; 
+        if (userMailExists != null) {
+        	bindingResult.rejectValue("email", "error.user", "*There is already a user registered with that email");
+        }
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (!pat.matcher(user.getEmail()).matches() && user.getEmail().length() != 0) {
+        	bindingResult.rejectValue("email", "error.user", "*Email invalid");
+        }
+        
+        // Password controls
+        if (user.getPassword().length() < 4 && user.getPassword().length() != 0) {
+        	bindingResult.rejectValue("password", "error.user", "*Password must contains at least 4 characters");
+        }
+        if (user.getPassword().length() > 20 && user.getPassword().length() != 0) {
+        	bindingResult.rejectValue("password", "error.user", "*Password must contains a maximum of 20 characters");
+        }
+        if (!user.getPassword().equals(user.getPasswordConfirmation())) {
+        	bindingResult.rejectValue("passwordConfirmation", "error.user", "*Password confirmation does not match the password");
+        }
+        
+        // Routing
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
@@ -57,6 +94,7 @@ public class LoginController {
             modelAndView.setViewName("registration");
 
         }
+        
         return modelAndView;
     }
     
