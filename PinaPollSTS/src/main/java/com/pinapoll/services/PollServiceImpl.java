@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pinapoll.models.Category;
 import com.pinapoll.models.Poll;
+import com.pinapoll.models.User;
 import com.pinapoll.repositories.PollRepository;
-
-import net.bytebuddy.asm.Advice.Return;
 
 @Service("pollService")
 public class PollServiceImpl implements PollService {
@@ -23,9 +23,9 @@ public class PollServiceImpl implements PollService {
 	}
 	
 	@Override
-	public List<Poll> getPollWithUser(int userId) {
+	public List<Poll> getPollWithUser(User user) {
 		// TODO Auto-generated method stub
-		return pollRepository.findByUser(userId);
+		return pollRepository.findByUser(user);
 	}
 	
 	@Override
@@ -35,8 +35,8 @@ public class PollServiceImpl implements PollService {
 	}
 
 	@Override
-	public List<Poll> getPollsWithCategoryId(int categoryId) {
-		return pollRepository.findByCategory(categoryId);
+	public List<Poll> getPollsWithCategory(Category category) {
+		return pollRepository.findByCategory(category);
 	}
 
 	@Override

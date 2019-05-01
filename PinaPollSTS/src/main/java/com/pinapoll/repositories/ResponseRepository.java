@@ -12,7 +12,7 @@ import com.pinapoll.models.Response;
 @Repository("responseRepository")
 public interface ResponseRepository extends JpaRepository<Response, Integer> {
 	
-	List<Response> findByPoll(Integer pollId);
+	List<Response> findByPoll(Poll poll);
 	
 	
 	// TODO :
