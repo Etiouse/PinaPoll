@@ -9,15 +9,15 @@
 		<div class="container pt-3">
 
 			<!-- Polls list -->
-			<h1 th:text="${user.name}">Username's polls</h1>
+			<h1 th:text="${user.name + 's polls'}">Username's polls</h1>
 			<hr/>
 			
-			<a href="#" class="btn btn-success mb-3">Create poll</a>
+			<a th:href="@{/poll/create/}" th:if="${can_create}" class="btn btn-success mb-3">Create poll</a>
 			
 			<div class="card-columns">
 				<div class="card" th:each="poll: ${polls}">
 					<div class="card-body">
-						<a href="#" class="close" ><span style="color: red">&times;</span></a>
+						<a th:href="@{/poll/delete/} + ${poll.id}" class="close" th:if="${can_delete}"><span style="color: red">&times;</span></a>
 						<h5 class="card-title" th:text="${poll.question}"> Question </h5>
 						<!-- CHART PREVIEW -->
 						<!--   <canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas> -->
