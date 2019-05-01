@@ -23,8 +23,8 @@ public class Poll {
     @Column(name = "id")
     private Integer id;
 	
-	@Column(name = "public")
-	private Boolean Public;
+	@Column(name = "is_public")
+	private Boolean isPublic;
 	
 	@Column(name = "closing_date")
 	private Date closingDate;
