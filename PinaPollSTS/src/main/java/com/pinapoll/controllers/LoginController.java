@@ -3,8 +3,6 @@ package com.pinapoll.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +26,7 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 	   
+    // Redirect the user to the login
 	@RequestMapping(value= {"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -35,15 +34,18 @@ public class LoginController {
 		return modelAndView;
 	}
 	
+	// Redirect the user to the registration
     @GetMapping(value="/registration")
     public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
+        
         return modelAndView;
     }
     
+    // Create the user from the registration inputs (if valid)
     @PostMapping(value = "/registration")
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
     	
@@ -89,6 +91,7 @@ public class LoginController {
             modelAndView.setViewName("registration");
         } else {
             userService.saveUser(user);
+            modelAndView.addObject("success", true);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("registration");
@@ -98,7 +101,7 @@ public class LoginController {
         return modelAndView;
     }
     
-	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
+	/*@RequestMapping(value="/admin/home", method = RequestMethod.GET)
 	public ModelAndView home(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -107,5 +110,5 @@ public class LoginController {
 		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
-	}
+	}*/
 }
