@@ -37,10 +37,7 @@ public class HomeController {
         
     	ModelAndView modelAndView = new ModelAndView();
         List<Poll> polls = pollService.getAll();
-        User user = new User();
-        user.setName("COUCOU");
         modelAndView.addObject("polls", polls);
-        modelAndView.addObject("user", user);
         modelAndView.setViewName("index");
         return modelAndView;
     }
@@ -54,6 +51,8 @@ public class HomeController {
         modelAndView.setViewName("index");
     	return modelAndView;
     }
+    
+    
     
     @GetMapping("/add")
     public String add(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
