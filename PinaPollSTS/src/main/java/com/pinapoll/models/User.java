@@ -41,7 +41,7 @@ public class User {
     @Column(name = "active")
 	private int active;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Poll> polls;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
