@@ -17,5 +17,5 @@ public interface ResponseRepository extends JpaRepository<Response, Integer> {
 	//@Query("SELECT u.tags FROM User u WHERE u.id = :id") // TODO
 	//List<Response> findUserResponseForPoll(@Param("user_id") int userId, @Param("poll_id") int pollId);
 	
-	List<Response> findByUser_Responses(Integer id_response);
+	//List<Response> findByUsers_Responses(Integer id_response);
 }

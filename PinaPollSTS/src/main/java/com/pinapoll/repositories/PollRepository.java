@@ -11,7 +11,7 @@ import com.pinapoll.models.Poll;
 @Repository("pollRepository")
 public interface PollRepository extends JpaRepository<Poll, Integer> {
 	
-	Poll findById(Integer id); // TODO : paginate
+	Optional<Poll> findById(Integer id); // TODO : paginate
 	
 	List<Poll> findByCategory(Integer id);
 	
