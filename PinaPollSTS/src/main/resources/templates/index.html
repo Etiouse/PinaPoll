@@ -13,6 +13,17 @@
 				<div th:text="${user.name}"> Name </div>
 			</div>
 			
+			<!-- Complex Search Bar -->
+			<form method="GET" action="/search_poll">
+				<div class="input-group mb-3">
+					<input type="text" name="question" class="form-control" placeholder="Enter a poll question..." aria-label="Recipient's username">
+					<input type="text" name="category" class="form-control" placeholder="Enter a poll category..." aria-label="Recipient's username">
+					<div class="input-group-append">
+						<input type="submit" value="Search" class="btn btn-outline-secondary" />
+					</div>
+				</div>	
+			</form>
+			
 			<!-- Polls list -->
 			<h1>All polls</h1>
 			<hr/>

@@ -60,4 +60,27 @@ public class PollServiceImpl implements PollService {
 		return pollRepository.findAll();
 	}
 
+	@Override
+	public List<Poll> complexPollsSearch(String question, String categoryName) {
+		// TODO Auto-generated method stub
+		
+		if (question == "" && categoryName == "")
+		{
+			return null;
+		}
+		else if (question != "" && categoryName != "")
+		{
+//			return pollRepository.getPollWithQuestionCategory(String question, categoryString category);
+		}
+		else if (question != "")
+		{
+//			return pollRepository.findByCategory(category);
+		}
+		else 
+		{
+			return pollRepository.findByQuestion(question);
+		}
+		return null;
+	}
+
 }

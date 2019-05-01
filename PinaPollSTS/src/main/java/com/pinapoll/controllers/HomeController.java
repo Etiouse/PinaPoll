@@ -42,8 +42,8 @@ public class HomeController {
         return modelAndView;
     }
     
-    @GetMapping("/search")
-    public ModelAndView search(@RequestParam String name)
+    @GetMapping("/search_user")
+    public ModelAndView searchUser(@RequestParam String name)
     {
     	ModelAndView modelAndView = new ModelAndView();
     	List<User> users = userService.searchUserWithName(name);
@@ -52,7 +52,15 @@ public class HomeController {
     	return modelAndView;
     }
     
-    
+    @GetMapping("/search_poll")
+    public ModelAndView searchPoll(@RequestParam String question, @RequestParam String categoryName)
+    {
+    	ModelAndView modelAndView = new ModelAndView();
+    	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
+    	modelAndView.addObject("polls", polls);
+        modelAndView.setViewName("index");
+    	return modelAndView;
+    }
     
     @GetMapping("/add")
     public String add(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {

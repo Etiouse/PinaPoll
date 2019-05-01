@@ -24,11 +24,6 @@ public interface PollRepository extends JpaRepository<Poll, Integer> {
 	
 	List<Poll> findByCategory(Category category);
 	
-	List<Poll> findByQuestion(String question); // on pourrait faire que il contienne seulement le string, avec une query sql
-	
-	// TODO :
-	
-	// find by title and maybe other
-	
+	List<Poll> findByQuestion(String question);
 	
 }

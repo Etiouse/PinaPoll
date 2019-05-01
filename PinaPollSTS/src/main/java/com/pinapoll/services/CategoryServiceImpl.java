@@ -1,5 +1,7 @@
 package com.pinapoll.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,11 @@ public class CategoryServiceImpl implements CategoryService{
 	public void saveCategory(Category category) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Category> getAll() {
+		// TODO Auto-generated method stub
+		return categoryRepository.findAll();
 	}
 }
