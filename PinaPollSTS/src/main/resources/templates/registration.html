@@ -21,9 +21,6 @@
 				
 				<input type="password" th:field="*{password}" placeholder="Password" class="form-control mt-3" />
 				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger small"></div>
-				
-				<input type="password" th:field="*{passwordConfirmation}" placeholder="Password confirmation" class="form-control mt-3" />
-				<div th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}" class="text-danger small"></div>
 
 				<div class="alert alert-success mt-3 mb-0" th:utext="${successMessage}" th:if="${success}"></div>
 				

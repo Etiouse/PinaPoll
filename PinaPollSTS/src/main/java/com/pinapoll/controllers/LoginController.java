@@ -82,9 +82,6 @@ public class LoginController {
         if (user.getPassword().length() > 20 && user.getPassword().length() != 0) {
         	bindingResult.rejectValue("password", "error.user", "*Password must contains a maximum of 20 characters");
         }
-        if (!user.getPassword().equals(user.getPasswordConfirmation())) {
-        	bindingResult.rejectValue("passwordConfirmation", "error.user", "*Password confirmation does not match the password");
-        }
         
         // Routing
         if (bindingResult.hasErrors()) {
