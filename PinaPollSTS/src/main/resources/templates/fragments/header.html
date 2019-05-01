@@ -13,6 +13,16 @@
             	<span class="text-warning">PinaPoll</span>
 				<img th:src="@{/favicon.png}" width="30px" height="30px" class="img-fluid pb-nav-logo mb-2" alt="PinaPoll"/>
 	        </a>
+	        <!-- Search Bar -->		
+	        <form method="GET" action="/search">
+				<div class="input-group mb-3">
+					<input type="text" name="name" class="form-control" placeholder="Enter a poll name..." aria-label="Recipient's username">
+					<div class="input-group-append">
+						<input type="submit" value="Search" class="btn btn-outline-secondary" />
+					</div>
+				</div>	
+			</form>
+			
             <form class="form-inline">
             
                 <!-- If not connected -->

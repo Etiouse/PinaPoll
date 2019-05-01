@@ -45,8 +45,8 @@ public class HomeController {
         return modelAndView;
     }
     
-    @GetMapping("/search/{name}")
-    public ModelAndView search(@PathVariable("name") String name)
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam String name)
     {
     	ModelAndView modelAndView = new ModelAndView();
     	List<User> users = userService.searchUserWithName(name);
