@@ -13,6 +13,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pinapoll.models.Poll;
@@ -45,6 +48,52 @@ public class PollController {
         return modelAndView;
     }
     
+    @RequestMapping(value = "/poll/create", method = RequestMethod.POST)
+    public ModelAndView addFruits(@Valid Poll poll, BindingResult bindingResult, Authentication authentication, 
+    							  @RequestParam("response") List<String> responses) {
+      	
+    	// Model and View
+        ModelAndView modelAndView = new ModelAndView();
+        
+        User user = userService.findUserByName(authentication.getName());
+        poll.setUser(user);
+        
+        int countResponse = 0;
+        for(String resp : responses) { if(!resp.equals("")) countResponse++; }
+        
+        // Question controls
+        if (poll.getQuestion().equals("")) {
+        	bindingResult.rejectValue("question", "error.poll", "* You must enter a question");
+        }
+        
+        if (countResponse < 2 || countResponse > 10) {
+        	bindingResult.rejectValue("responses", "error.poll", "* You must have between two and ten responses");
+        }
+
+        // Routing
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("poll-creation");
+        } else {
+            pollService.savePoll(poll);
+            
+            for(String resp : responses) {    	
+            	if(!resp.equals("")) {
+            		Response r = new Response();
+                	r.setDescription(resp);
+                	r.setPoll(poll);
+                	System.out.println("weh");
+                	responseService.saveResponse(r);
+            	}
+            }
+            
+            modelAndView.addObject("poll", new Poll());
+            modelAndView.setViewName("redirect:/user/" + user.getName());
+        }
+        
+        return modelAndView;
+    }
+    
+    /*
     @PostMapping(value = "/poll/create")
     public ModelAndView createNewPoll(@Valid Poll poll, BindingResult bindingResult, Authentication authentication) {
     	
@@ -53,6 +102,7 @@ public class PollController {
         
         User user = userService.findUserByName(authentication.getName());
         poll.setUser(user);
+        
         
         // Name controls
         if (poll.getQuestion().equals("")) {
@@ -70,6 +120,7 @@ public class PollController {
         
         return modelAndView;
     }
+    */
     
     @GetMapping("/poll/{id}")
     public ModelAndView detailPoll(Model model, @PathVariable("id") int id, Authentication authentication) {

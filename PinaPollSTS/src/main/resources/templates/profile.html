@@ -9,7 +9,7 @@
 		<div class="container pt-3">
 
 			<!-- Polls list -->
-			<h1 th:text="${user.name}">Username's polls</h1>
+			<h1 th:text="${user.name + 's polls'}">Username's polls</h1>
 			<hr/>
 			
 			<a th:href="@{/poll/create/}" th:if="${can_create}" class="btn btn-success mb-3">Create poll</a>

@@ -1,4 +1,4 @@
-var MAX_CHOICE_NUMBER = 20;
+var MAX_CHOICE_NUMBER = 10;
 var MIN_CHOICE_NUMBER = 2;
 
 var nbChoices = 2;
@@ -21,7 +21,7 @@ function addChoice()
     newInput.placeholder = 'Choice ' + nbChoices;
     newInput.className = 'form-control mt-2';
     newInput.id = choicex;
-    newInput.name = choicex;
+    newInput.name = 'response';
 
     choicesDiv.appendChild(newInput);
   }
