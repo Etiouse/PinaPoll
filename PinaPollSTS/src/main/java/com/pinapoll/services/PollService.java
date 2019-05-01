@@ -7,7 +7,7 @@ import com.pinapoll.models.Poll;
 public interface PollService {
 
 	public Poll getPoll(int id);
-	public Poll getPollWithUser(int userId);
+	public List<Poll> getPollWithUser(int userId);
 	public List<Poll> getAll();
 	public List<Poll> getPublicPoll();
 	public List<Poll> getPollsWithCategoryId(int categoryId);
