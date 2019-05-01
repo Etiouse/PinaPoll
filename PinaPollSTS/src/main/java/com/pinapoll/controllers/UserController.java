@@ -25,7 +25,7 @@ public class UserController {
 	private PollServiceImpl pollService;
 
     @GetMapping("/user/{name}")
-    public ModelAndView detailBet(Model model, @PathVariable("name") String name, Authentication authentication) {
+    public ModelAndView detailUser(Model model, @PathVariable("name") String name, Authentication authentication) {
     	ModelAndView modelAndView = new ModelAndView();
     	
     	User user = userService.findUserByName(name);
