@@ -41,4 +41,8 @@ public class Poll {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category")
 	private Category category;
+	
+	public String getQuestion(){
+		return this.question;
+	}
 }
