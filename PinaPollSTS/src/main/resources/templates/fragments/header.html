@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org" th:fragment="header">
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -9,20 +9,20 @@
 	<div>
 		<!-- this is header --> 
 		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand" th:href="@{/}" >PinaPoll</a>
+			<a class="navbar-brand" th:href="@{/}">PinaPoll</a>
 			<form class="form-inline">
 			
 				<!-- If not connected -->
-				<a th:href="@{/login}" class="btn btn-success m-2 my-sm-0">Login</a>
-				<a th:href="@{/registration}">Sign up</a>
+				<a th:href="@{/login}" class="btn btn-success m-2">Login</a>
+				<a th:href="@{/registration}" class="btn btn-secondary m-2">Sign up</a>
 				
 				<!-- If connected -->
 					<!-- If not admin -->
-					<button class="btn btn-primary m-2 my-sm-0" type="submit">Username</button>
+					<button class="btn btn-primary m-2 my-sm-0" type="submit" sec:authorize="isAuthenticated()">Username</button>
 					<!-- If admin -->
-					<button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button>
+					<button class="btn btn-warning m-2 my-sm-0" type="submit" sec:authorize="isAuthenticated()">Admin</button>
 					
-					<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+				<button class="btn btn-danger my-2 my-sm-0" type="submit" sec:authorize="isAuthenticated()">Logout</button>
 			</form>
 		</nav>
 	</div>
