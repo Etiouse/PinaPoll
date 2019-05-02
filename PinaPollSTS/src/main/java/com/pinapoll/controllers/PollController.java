@@ -1,5 +1,7 @@
 package com.pinapoll.controllers;
 
+import java.awt.print.Printable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -128,11 +130,26 @@ public class PollController {
     	modelAndView.addObject("poll", poll);
     	modelAndView.addObject("responses", responses);
         modelAndView.setViewName("poll");
+
+        List<String> responsesDescription = new ArrayList<>();
+        List<Integer> nbAnswers = new ArrayList<>();
+        for (Response response : responses)
+        {
+        	responsesDescription.add(response.getDescription());
+        	nbAnswers.add(0);        	
+        }
         
-        List<String> list = Arrays.asList("sup1", "sup2", "sup3");
-    	modelAndView.addObject("questions", list);
-    	List<Integer> list2 = Arrays.asList(1, 2, 3);
-    	modelAndView.addObject("nbAnswers", list2);
+        
+        List<UserResponse> userResponses = userResponseService.respongetAllResponseWithPollId(id);
+        
+        for (int i = 0; i < userResponses.size(); i++)
+        {
+        	int index = responses.indexOf(userResponses.get(i).getResponse());
+        	nbAnswers.set(index, nbAnswers.get(index) + 1);
+        }
+       
+    	modelAndView.addObject("questions", responsesDescription);
+    	modelAndView.addObject("nbAnswers", nbAnswers);
     	
         return modelAndView;
     }

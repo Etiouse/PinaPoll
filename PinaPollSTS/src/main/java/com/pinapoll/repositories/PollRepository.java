@@ -34,7 +34,7 @@ public interface PollRepository extends JpaRepository<Poll, Integer> {
 	@Query(value = "SELECT p.* FROM poll p, category c WHERE c.name = :categoryName AND c.id = p.category", nativeQuery = true)
 	List<Poll> findByCategoryName(@Param("categoryName")String categoryName);
 	
-	@Query(value = "SELECT p.* FROM poll p, category c WHERE c.name = :categoryName AND c.id = p.category AND p.question LIKE '%':question'%'", nativeQuery = true)
-	List<Poll> findByQuestionCategory(String question, String categoryName);
+	@Query(value = "SELECT p.* FROM poll p, category c WHERE c.name = :categoryName AND c.id = p.category AND p.question LIKE %:question%", nativeQuery = true)
+	List<Poll> findByQuestionCategory(@Param("question")String question, @Param("categoryName")String categoryName);
 	
 }

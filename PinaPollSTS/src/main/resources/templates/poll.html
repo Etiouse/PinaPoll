@@ -61,7 +61,7 @@
 					text : 'Answers'
 				},
 				tooltip : {
-					pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+					pointFormat : '{series.name}: <b>{point.y}</b>'
 				},
 				plotOptions : {
 					pie : {
@@ -76,7 +76,7 @@
 				},
 				series : [ {
 					type : 'pie',
-					name : 'Ratio',
+					name : 'Number of Answer',
 					data: (function () {
 			            // generate an array of random data
 			            var data = [], i;
