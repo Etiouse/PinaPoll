@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import com.pinapoll.models.Category;
@@ -26,11 +25,9 @@ public interface PollRepository extends JpaRepository<Poll, Integer> {
 	
 	List<Poll> findByCategory(Category category);
 	
-	List<Poll> findByQuestion(String question); // on pourrait faire que il contienne seulement le string, avec une query sql
+	List<Poll> findByQuestion(String question);
 	
-	// TODO :
-	
-	// find by title and maybe other
-	
+//	@Query("SELECT u FROM User u WHERE u.status = 1")
+//	List<Poll> findByCategoryName(@Param("categoryName")String categoryName);
 	
 }

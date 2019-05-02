@@ -15,16 +15,16 @@ import javax.persistence.Table;
 @Table(name = "category")
 public class Category {
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-	private List<Poll> polls;
-	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
-	
-	@Column(name = "description")
-	private String description;
+
+	@Column(name = "name")
+	private String name;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+	private List<Poll> polls;
 
 	public Integer getId() {
 		return id;
@@ -34,11 +34,20 @@ public class Category {
 		this.id = id;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public List<Poll> getPolls() {
 		return polls;
 	}
-	
+
 	public void setPolls(List<Poll> polls) {
 		this.polls = polls;
 	}
+
 }

@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 
 import javax.naming.directory.SearchControls;
 
+import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -60,9 +61,13 @@ public class HomeController {
         return modelAndView;
     }
     
-    @GetMapping("/search")
-    public ModelAndView search(@RequestParam String name)
+    @GetMapping("/search_user")
+    public ModelAndView searchUser(@RequestParam String name)
     {
+    	if (name == "")
+    	{
+    		// TODO message erreur
+    	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<User> users = userService.searchUserWithName(name);
     	modelAndView.addObject("users", users);
@@ -70,7 +75,19 @@ public class HomeController {
     	return modelAndView;
     }
     
-    
+    @GetMapping("/search_poll")
+    public ModelAndView searchPoll(@RequestParam(defaultValue = "") String question, @RequestParam(defaultValue = "") String categoryName)
+    {
+    	if (question == "" && categoryName == "")
+    	{
+    		// TODO message erreur
+    	}
+    	ModelAndView modelAndView = new ModelAndView();
+    	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
+    	modelAndView.addObject("polls", polls);
+        modelAndView.setViewName("index");
+    	return modelAndView;
+    }
     
     @GetMapping("/add")
     public String add(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
