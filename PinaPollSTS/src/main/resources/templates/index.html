@@ -8,7 +8,7 @@
 			
 			<!--  User Search Result -->
 			<div class="card" th:each="user: ${users}">
-				<div th:text="${user.name}"> Name </div>
+				<a th:href="@{/user/} + ${user.name}" th:text="${user.name}" class="btn btn-light"> Name </a>
 			</div>
 			
 			<!-- Complex Search Bar -->
