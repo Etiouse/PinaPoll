@@ -3,9 +3,14 @@ package com.pinapoll.tests;
 import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.pinapoll.models.Poll;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class PinaPollTests {
 	
 	@Test
