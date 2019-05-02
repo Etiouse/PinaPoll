@@ -18,16 +18,16 @@
 			<hr/>
 			
 			<div class="card-columns">
-		
-				<div class="card" th:each="poll: ${polls}">
-					<div class="card-body">
-						<h5 class="card-title" th:text="${poll.question}"> Question </h5>
-						<!-- CHART PREVIEW -->
-						<canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas>
-						<button class="btn btn-sm btn-outline-primary w-100" type="button">Show poll</button>
-					</div>
-				</div>
-			</div>
+        
+                <div class="card" th:each="poll: ${polls}">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${poll.question}"> Question </h5>
+                        <!-- CHART PREVIEW -->
+                        <canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas>
+                        <a th:href="@{/poll/} + ${poll.id}" class="btn btn-sm btn-outline-primary w-100">Show poll</a>
+                    </div>
+                </div>
+            </div>
 			
 			<!-- Pagination -->
 			<nav>
