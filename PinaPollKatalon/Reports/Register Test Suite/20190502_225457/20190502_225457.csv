@@ -1,0 +1,5 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Register Test Suite,,,2019-05-02 22:55:02,2019-05-02 22:55:05,3.215s,FAILED
+,,,,,,
+Test Cases/Register Test Cases/Register correct user,,,2019-05-02 22:55:03,2019-05-02 22:55:05,2.120s,FAILED
+"openBrowser("""")",,,2019-05-02 22:55:04,2019-05-02 22:55:05,0.772s,FAILED

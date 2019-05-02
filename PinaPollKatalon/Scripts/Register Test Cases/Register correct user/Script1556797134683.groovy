@@ -17,15 +17,15 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://localhost:8080/')
 
-WebUI.click(findTestObject('Page_PinaPoll/a_Sign up'))
+WebUI.click(findTestObject('Object Repository/Page_/a_Sign up'))
 
-WebUI.setText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_name (1)'), 'TestsKatalon')
+WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_name'), 'KatalonUser')
 
-WebUI.setText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_email (1)'), 'tests@katalon.ch')
+WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_email'), 'katalon@user.ch')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_password (1)'), '4nvbrPglk7k=')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_/input_Registration Form_password'), '4nvbrPglk7k=')
 
-WebUI.click(findTestObject('Object Repository/Page_Sign up form/button_Sign up'))
+WebUI.click(findTestObject('Object Repository/Page_/button_Sign up'))
 
 WebUI.closeBrowser()
 

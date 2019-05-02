@@ -1,0 +1,12 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Register Test Suite,Chrome 73.0.3683.103,,2019-05-02 22:55:16,2019-05-02 22:55:28,11.608s,PASSED
+,,,,,,
+Test Cases/Register Test Cases/Register correct user,Chrome 73.0.3683.103,,2019-05-02 22:55:17,2019-05-02 22:55:27,10.819s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 22:55:18,2019-05-02 22:55:24,6.705s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 22:55:24,2019-05-02 22:55:25,0.867s,PASSED
+"click(findTestObject(""Object Repository/Page_/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 22:55:25,2019-05-02 22:55:25,0.344s,PASSED
+"setText(findTestObject(""Object Repository/Page_/input_Registration Form_name""), ""KatalonUser"")",Chrome 73.0.3683.103,,2019-05-02 22:55:25,2019-05-02 22:55:26,0.253s,PASSED
+"setText(findTestObject(""Object Repository/Page_/input_Registration Form_email""), ""katalon@user.ch"")",Chrome 73.0.3683.103,,2019-05-02 22:55:26,2019-05-02 22:55:26,0.216s,PASSED
+"setEncryptedText(findTestObject(""Object Repository/Page_/input_Registration Form_password""), ""4nvbrPglk7k="")",Chrome 73.0.3683.103,,2019-05-02 22:55:26,2019-05-02 22:55:26,0.408s,PASSED
+"click(findTestObject(""Object Repository/Page_/button_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 22:55:26,2019-05-02 22:55:27,0.278s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-05-02 22:55:27,2019-05-02 22:55:27,0.789s,PASSED
