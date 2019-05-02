@@ -1,9 +1,7 @@
 package com.pinapoll.controllers;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +10,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pinapoll.models.Poll;
 import com.pinapoll.models.Response;
 import com.pinapoll.models.User;
+import com.pinapoll.models.UserResponse;
 import com.pinapoll.services.PollServiceImpl;
 import com.pinapoll.services.ResponseServiceImpl;
+import com.pinapoll.services.UserResponseServiceImpl;
 import com.pinapoll.services.UserServiceImpl;
 
 
@@ -39,6 +39,9 @@ public class PollController {
 	
 	@Autowired
     private ResponseServiceImpl responseService;
+	
+	@Autowired
+    private UserResponseServiceImpl userResponseService;
 	
     @GetMapping("/poll/create")
     public ModelAndView pollCreation() {
@@ -104,6 +107,37 @@ public class PollController {
     	modelAndView.addObject("poll", poll);
     	modelAndView.addObject("responses", responses);
         modelAndView.setViewName("poll");
+        return modelAndView;
+    }
+    
+    @PostMapping(value = "/poll/{id}")
+    public ModelAndView answerPoll(Model model, @PathVariable("id") int id, Authentication authentication, @RequestParam("radioAnswer") String answer) {
+    	
+    	// Model and View
+        ModelAndView modelAndView = new ModelAndView();
+        
+        Poll poll = pollService.getPoll(id);
+        List<Response> responses = poll.getResponses();
+        
+        User user = userService.findUserByName(authentication.getName());
+        Response response = null;
+        for (int i = 0; i < responses.size(); i++) {
+        	if (responses.get(i).getDescription().equals(answer)) {
+        		response = responses.get(i);
+        	}
+        }
+
+    	UserResponse userResponse = new UserResponse();
+        if (user != null && response != null) {
+        	userResponse.setUser(user);
+        	userResponse.setResponse(response);
+            userResponseService.saveUserResponse(userResponse);
+        	//user.addUserResponse(userResponse);
+        	//userService.saveUser(user);
+        }
+
+        //modelAndView.addObject("userResponse", userResponse);
+        modelAndView.setViewName("redirect:/poll/" + id);
         return modelAndView;
     }
     

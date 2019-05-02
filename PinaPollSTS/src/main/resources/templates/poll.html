@@ -27,11 +27,13 @@
 					<div class="mb-3 ans-green answer">Choice 2</div> -->
 					
 					<!-- Connected no answer -->
-					<div class="form-check mb-3" th:each="response: ${responses}">
-						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-						<label class="form-check-label" th:text="${response.description}" >Choice</label>
-					</div>
-					<input type="submit" th:href="@{/poll/} + ${poll.id}" class="btn btn-success w-100" name="answer">Submit answer</input>
+					<form id="answer-poll" th:action="@{/poll/} + ${poll.id}" method="post" role="form">
+						<div class="form-check mb-3" th:each="response: ${responses}">
+							<input class="form-check-input" type="radio" name="radioAnswer" id="answer" th:value="${response.description}" checked>
+							<label class="form-check-label" th:text="${response.description}">Choice</label>
+						</div>
+						<button type="submit" class="btn btn-success w-100">Submit answer</button>
+					</form>
 				</div>
 			</div>
 		</div>
