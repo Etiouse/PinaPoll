@@ -15,7 +15,19 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('https://google.com/')
+WebUI.navigateToUrl('http://localhost:8080/')
+
+WebUI.click(findTestObject('Page_PinaPoll/a_Sign up'))
+
+WebUI.setText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_name (2)'), 'Kat')
+
+WebUI.setText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_email (2)'), 'kat@kat.ch')
+
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_password (2)'), '4nvbrPglk7k=')
+
+WebUI.click(findTestObject('Object Repository/Page_Sign up form/button_Sign up (1)'))
+
+WebUI.click(findTestObject('Object Repository/Page_Sign up form/div_Name must contains at least 4 characters'))
 
 WebUI.closeBrowser()
 

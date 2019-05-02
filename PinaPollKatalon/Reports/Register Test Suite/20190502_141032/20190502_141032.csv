@@ -1,0 +1,46 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Register Test Suite,Chrome 73.0.3683.103,,2019-05-02 14:10:36,2019-05-02 14:11:06,30.264s,PASSED
+,,,,,,
+Test Cases/Register Test Cases/Register correct user,Chrome 73.0.3683.103,,2019-05-02 14:10:36,2019-05-02 14:10:47,10.682s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 14:10:37,2019-05-02 14:10:44,6.285s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 14:10:44,2019-05-02 14:10:44,0.511s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 14:10:44,2019-05-02 14:10:45,0.485s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_name (1)""), ""TestsKatalon"")",Chrome 73.0.3683.103,,2019-05-02 14:10:45,2019-05-02 14:10:45,0.325s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_email (1)""), ""tests@katalon.ch"")",Chrome 73.0.3683.103,,2019-05-02 14:10:45,2019-05-02 14:10:45,0.259s,PASSED
+"setEncryptedText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_password (1)""), ""4nvbrPglk7k="")",Chrome 73.0.3683.103,,2019-05-02 14:10:45,2019-05-02 14:10:45,0.262s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/button_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 14:10:45,2019-05-02 14:10:46,0.537s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-05-02 14:10:46,2019-05-02 14:10:47,0.830s,PASSED
+,,,,,,
+Test Cases/Register Test Cases/Register invalid username,Chrome 73.0.3683.103,,2019-05-02 14:10:47,2019-05-02 14:10:53,6.195s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 14:10:47,2019-05-02 14:10:50,3.168s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 14:10:50,2019-05-02 14:10:51,0.441s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 14:10:51,2019-05-02 14:10:51,0.268s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_name (2)""), ""Kat"")",Chrome 73.0.3683.103,,2019-05-02 14:10:51,2019-05-02 14:10:51,0.217s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_email (2)""), ""kat@kat.ch"")",Chrome 73.0.3683.103,,2019-05-02 14:10:51,2019-05-02 14:10:52,0.320s,PASSED
+"setEncryptedText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_password (2)""), ""4nvbrPglk7k="")",Chrome 73.0.3683.103,,2019-05-02 14:10:52,2019-05-02 14:10:52,0.191s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/button_Sign up (1)""))",Chrome 73.0.3683.103,,2019-05-02 14:10:52,2019-05-02 14:10:52,0.266s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/div_Name must contains at least 4 characters""))",Chrome 73.0.3683.103,,2019-05-02 14:10:52,2019-05-02 14:10:52,0.119s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-05-02 14:10:52,2019-05-02 14:10:53,0.798s,PASSED
+,,,,,,
+Test Cases/Register Test Cases/Register invalid email,Chrome 73.0.3683.103,,2019-05-02 14:10:53,2019-05-02 14:11:00,6.569s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 14:10:53,2019-05-02 14:10:57,3.368s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 14:10:57,2019-05-02 14:10:57,0.591s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 14:10:57,2019-05-02 14:10:58,0.247s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_name (3)""), ""KatalonEmail"")",Chrome 73.0.3683.103,,2019-05-02 14:10:58,2019-05-02 14:10:58,0.317s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_email (3)""), ""haha"")",Chrome 73.0.3683.103,,2019-05-02 14:10:58,2019-05-02 14:10:58,0.150s,PASSED
+"setEncryptedText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_password (3)""), ""4nvbrPglk7k="")",Chrome 73.0.3683.103,,2019-05-02 14:10:58,2019-05-02 14:10:58,0.151s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/button_Sign up (2)""))",Chrome 73.0.3683.103,,2019-05-02 14:10:58,2019-05-02 14:10:59,0.309s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/form_Registration Form Email invalid Sign upBack to login""))",Chrome 73.0.3683.103,,2019-05-02 14:10:59,2019-05-02 14:10:59,0.115s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/div_Email invalid""))",Chrome 73.0.3683.103,,2019-05-02 14:10:59,2019-05-02 14:10:59,0.121s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-05-02 14:10:59,2019-05-02 14:11:00,0.793s,PASSED
+,,,,,,
+Test Cases/Register Test Cases/Register invalid password,Chrome 73.0.3683.103,,2019-05-02 14:11:00,2019-05-02 14:11:06,6.095s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 14:11:00,2019-05-02 14:11:03,3.229s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 14:11:03,2019-05-02 14:11:04,0.518s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 14:11:04,2019-05-02 14:11:04,0.245s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_name (4)""), ""KatalonTestPw"")",Chrome 73.0.3683.103,,2019-05-02 14:11:04,2019-05-02 14:11:04,0.270s,PASSED
+"setText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_email (4)""), ""a@a.bb"")",Chrome 73.0.3683.103,,2019-05-02 14:11:04,2019-05-02 14:11:04,0.222s,PASSED
+"setEncryptedText(findTestObject(""Object Repository/Page_Sign up form/input_Registration Form_password (4)""), ""HeCM15nHKBI="")",Chrome 73.0.3683.103,,2019-05-02 14:11:04,2019-05-02 14:11:05,0.161s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/button_Sign up (3)""))",Chrome 73.0.3683.103,,2019-05-02 14:11:05,2019-05-02 14:11:05,0.176s,PASSED
+"click(findTestObject(""Object Repository/Page_Sign up form/div_Password must contains at least 4 characters""))",Chrome 73.0.3683.103,,2019-05-02 14:11:05,2019-05-02 14:11:05,0.119s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-05-02 14:11:05,2019-05-02 14:11:06,0.780s,PASSED
