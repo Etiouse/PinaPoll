@@ -13,7 +13,7 @@
 				
 				<!-- Chart -->
 				<div class="p-0 col-12 col-md-6 col-lg-4">
-					<canvas class="border rounded w-100" width="100px" height="100px"></canvas>
+					<div id="chart_display" style="height: 350px"></div>
 				</div>
 				
 				<!-- Answers -->
@@ -27,20 +27,18 @@
 					<div class="mb-3 ans-green answer">Choice 2</div> -->
 					
 					<!-- Connected no answer -->
-					<form id="answer-poll" th:action="@{/poll/} + ${poll.id}" method="post" role="form">
+					<form th:if="${!answered}" id="answer-poll" th:action="@{/poll/} + ${poll.id}" method="post" role="form">
 						<div class="form-check mb-3" th:each="response: ${responses}">
 							<input class="form-check-input" type="radio" name="radioAnswer" id="answer" th:value="${response.description}" checked>
 							<label class="form-check-label" th:text="${response.description}">Choice</label>
 						</div>
 						<button type="submit" class="btn btn-success w-100">Submit answer</button>
 					</form>
+					
+					<h3 class="font-italic text-success" th:if="${answered}" th:text="${'You answered '} + ${answer}">You answered</h3>
 				</div>
 			</div>
 		</div>
-		
-		
-		<div id="chart_display" style="height: 400px"></div>
-		
 		
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
@@ -52,13 +50,16 @@
 				chart : {
 					type : 'pie',
 					options3d : {
-						enabled : true,
+						enabled : false,
 						alpha : 50,
-						beta : 0
+						beta : 0,
 					}
 				},
 				title : {
-					text : 'Answers'
+					text : 'asdad',
+					style: {
+				        display: 'none'
+				    }
 				},
 				tooltip : {
 					pointFormat : '{series.name}: <b>{point.y}</b>'

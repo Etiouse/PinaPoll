@@ -125,12 +125,28 @@ public class PollController {
     	ModelAndView modelAndView = new ModelAndView();
     	
     	Poll poll = pollService.getPoll(id);
+    	User userConnected = userService.findUserByName(authentication.getName());
     	List<Response> responses = responseService.getResponsesForPoll(poll);
     	
     	modelAndView.addObject("poll", poll);
     	modelAndView.addObject("responses", responses);
         modelAndView.setViewName("poll");
 
+        // get answer if already answered
+        boolean answered = false;
+        String answer = "";
+        
+        for(Response r : poll.getResponses()) { 
+        	if(userResponseService.userResponseExist(userConnected, r)) {
+        		answered = true;
+        		answer = r.getDescription();
+        	}
+        }
+               
+        modelAndView.addObject("answer", answer);
+        modelAndView.addObject("answered", answered);
+
+        // get all answers for the poll
         List<String> responsesDescription = new ArrayList<>();
         List<Integer> nbAnswers = new ArrayList<>();
         for (Response response : responses)
@@ -138,7 +154,6 @@ public class PollController {
         	responsesDescription.add(response.getDescription());
         	nbAnswers.add(0);        	
         }
-        
         
         List<UserResponse> userResponses = userResponseService.respongetAllResponseWithPollId(id);
         
