@@ -1,6 +1,7 @@
 package com.pinapoll.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -18,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pinapoll.models.Category;
 import com.pinapoll.models.Poll;
 import com.pinapoll.models.Response;
 import com.pinapoll.models.User;
 import com.pinapoll.models.UserResponse;
+import com.pinapoll.services.CategoryServiceImpl;
 import com.pinapoll.services.PollServiceImpl;
 import com.pinapoll.services.ResponseServiceImpl;
 import com.pinapoll.services.UserResponseServiceImpl;
@@ -43,25 +46,38 @@ public class PollController {
 	@Autowired
     private UserResponseServiceImpl userResponseService;
 	
+	@Autowired
+	private CategoryServiceImpl categoryService;
+	
     @GetMapping("/poll/create")
     public ModelAndView pollCreation() {
 
     	ModelAndView modelAndView = new ModelAndView();
-        Poll poll = new Poll();
+        
+    	Poll poll = new Poll();
+        List<Category> categories = categoryService.getAll();
+        
         modelAndView.addObject("poll", poll);
+        modelAndView.addObject("categories", categories);
         modelAndView.setViewName("poll-creation");
         return modelAndView;
     }
     
     @RequestMapping(value = "/poll/create", method = RequestMethod.POST)
     public ModelAndView addFruits(@Valid Poll poll, BindingResult bindingResult, Authentication authentication, 
-    							  @RequestParam("response") List<String> responses) {
+    							  @RequestParam("response") List<String> responses,
+    							  @RequestParam("select_category") String value) {
       	
     	// Model and View
         ModelAndView modelAndView = new ModelAndView();
         
         User user = userService.findUserByName(authentication.getName());
+        Category cat = categoryService.getWithName(value);
+        
+        //modelAndView.addObject("categories", categories);
+        
         poll.setUser(user);
+        poll.setCategory(cat);
         
         int countResponse = 0;
         for(String resp : responses) { if(!resp.equals("")) countResponse++; }
@@ -77,6 +93,7 @@ public class PollController {
 
         // Routing
         if (bindingResult.hasErrors()) {
+        	System.err.println(bindingResult.getAllErrors().get(0).toString());
             modelAndView.setViewName("poll-creation");
         } else {
             pollService.savePoll(poll);
