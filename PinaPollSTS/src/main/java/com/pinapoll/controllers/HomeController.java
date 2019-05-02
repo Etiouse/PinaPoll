@@ -57,7 +57,7 @@ public class HomeController {
     @GetMapping("/search_user")
     public ModelAndView searchUser(@RequestParam String name)
     {
-    	if (name == "")
+    	if (name.equals(""))
     	{
     		// TODO message erreur
     	}
@@ -71,7 +71,7 @@ public class HomeController {
     @GetMapping("/search_poll")
     public ModelAndView searchPoll(@RequestParam(defaultValue = "") String question, @RequestParam(defaultValue = "") String categoryName)
     {
-    	if (question == "" && categoryName == "")
+    	if (question.equals("") && categoryName.equals(""))
     	{
     		// TODO message erreur
     	}

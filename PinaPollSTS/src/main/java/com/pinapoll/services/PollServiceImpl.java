@@ -20,13 +20,11 @@ public class PollServiceImpl implements PollService {
 
 	@Override
 	public Poll getPoll(int id) {
-		// TODO Auto-generated method stub
-		return pollRepository.findById(id).get();
+		return pollRepository.findById(id).orElse(null);
 	}
 	
 	@Override
 	public List<Poll> getPollWithUser(User user) {
-		// TODO Auto-generated method stub
 		return pollRepository.findByUser(user);
 	}
 	
@@ -48,7 +46,6 @@ public class PollServiceImpl implements PollService {
 
 	@Override
 	public void savePoll(Poll poll) {
-		// TODO Auto-generated method stub
 		pollRepository.save(poll);
 	}
 	
@@ -64,7 +61,6 @@ public class PollServiceImpl implements PollService {
 
 	@Override
 	public List<Poll> complexPollsSearch(String question, String categoryName) {
-		// TODO Auto-generated method stub
 
     	System.out.println("question : " +  question + ", category : " + categoryName);
 //		if (question == "" && categoryName == "")
