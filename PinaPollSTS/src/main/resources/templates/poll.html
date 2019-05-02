@@ -35,5 +35,77 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		<div id="chart_display" style="height: 400px"></div>
+		
+		
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script th:inline="javascript">
+		/*<![CDATA[*/
+		
+			Highcharts.chart('chart_display', {
+				chart : {
+					type : 'pie',
+					options3d : {
+						enabled : true,
+						alpha : 50,
+						beta : 0
+					}
+				},
+				title : {
+					text : 'Answers'
+				},
+				tooltip : {
+					pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions : {
+					pie : {
+						allowPointSelect : true,
+						cursor : 'pointer',
+						depth : 35,
+						dataLabels: {
+			                enabled: false
+			            },
+			            showInLegend: true
+					}
+				},
+				series : [ {
+					type : 'pie',
+					name : 'Ratio',
+					data: (function () {
+			            // generate an array of random data
+			            var data = [], i;
+			            
+			            var questions = [];
+			            var nbAnswers = [];
+			            
+			            /*[# th:each="question : ${questions}"]*/
+			            questions.push(/*[[${question}]]*/);
+			    		/*[/]*/
+			    		
+			    		/*[# th:each="nbAnswer : ${nbAnswers}"]*/
+			            nbAnswers.push(/*[[${nbAnswer}]]*/);
+			    		/*[/]*/
+			    		
+			    		console.log(questions);
+			    		console.log(nbAnswers);
+			    		
+			    		for (i = 0; i < questions.length; i += 1){
+			    			data.push([
+			                    questions[i],
+			                    nbAnswers[i]
+			                ]);
+			    			console.log("coucou");
+			    		}
+			            
+			            return data;
+			        }())
+				} ]
+			});
+		   /*]]>*/
+		</script>
 	</body>
 </html>

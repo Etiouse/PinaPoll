@@ -1,6 +1,10 @@
 package com.pinapoll.controllers;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -124,6 +128,12 @@ public class PollController {
     	modelAndView.addObject("poll", poll);
     	modelAndView.addObject("responses", responses);
         modelAndView.setViewName("poll");
+        
+        List<String> list = Arrays.asList("sup1", "sup2", "sup3");
+    	modelAndView.addObject("questions", list);
+    	List<Integer> list2 = Arrays.asList(1, 2, 3);
+    	modelAndView.addObject("nbAnswers", list2);
+    	
         return modelAndView;
     }
     
