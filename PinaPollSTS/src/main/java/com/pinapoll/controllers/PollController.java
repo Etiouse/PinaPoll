@@ -123,11 +123,28 @@ public class PollController {
     	ModelAndView modelAndView = new ModelAndView();
     	
     	Poll poll = pollService.getPoll(id);
+    	User userConnected = userService.findUserByName(authentication.getName());
     	List<Response> responses = responseService.getResponsesForPoll(poll);
     	
     	modelAndView.addObject("poll", poll);
     	modelAndView.addObject("responses", responses);
         modelAndView.setViewName("poll");
+
+        System.out.println("Poll --> " + poll.getId());
+        System.out.println("User --> " + userConnected.getId());
+        
+        boolean answered = false;
+        String answer = "";
+        
+        for(Response r : poll.getResponses()) { 
+        	if(userResponseService.userResponseExist(userConnected, r)) {
+        		answered = true;
+        		answer = r.getDescription();
+        	}
+        }
+               
+        modelAndView.addObject("answer", answer);
+        modelAndView.addObject("answered", answered);
         
         List<String> list = Arrays.asList("sup1", "sup2", "sup3");
     	modelAndView.addObject("questions", list);
