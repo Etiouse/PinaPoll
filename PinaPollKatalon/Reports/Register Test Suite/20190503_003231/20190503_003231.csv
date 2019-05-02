@@ -1,0 +1,7 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Register Test Suite,Chrome 73.0.3683.103,,2019-05-03 00:32:46,2019-05-03 00:32:56,10.093s,PASSED
+,,,,,,
+Test Cases/Register Test Cases/Home,Chrome 73.0.3683.103,,2019-05-03 00:32:47,2019-05-03 00:32:56,9.408s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-03 00:32:48,2019-05-03 00:32:54,6.340s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-03 00:32:54,2019-05-03 00:32:55,1.184s,PASSED
+closeBrowser(),Chrome 73.0.3683.103,,2019-05-03 00:32:55,2019-05-03 00:32:56,1.032s,PASSED
