@@ -15,21 +15,17 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('http://localhost:8080/')
+WebUI.navigateToUrl('http://localhost:8080/registration')
 
-WebUI.click(findTestObject('Page_PinaPoll/a_Sign up'))
+WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_name (3)'), 'TestUserKatalon')
 
-WebUI.setText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_name (3)'), 'KatalonEmail')
+WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_email (3)'), 'aaaa')
 
-WebUI.setText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_email (3)'), 'haha')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_/input_Registration Form_password (3)'), '4nvbrPglk7k=')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_Sign up form/input_Registration Form_password (3)'), '4nvbrPglk7k=')
+WebUI.click(findTestObject('Object Repository/Page_/button_Sign up (3)'))
 
-WebUI.click(findTestObject('Object Repository/Page_Sign up form/button_Sign up (2)'))
-
-WebUI.click(findTestObject('Object Repository/Page_Sign up form/form_Registration Form Email invalid Sign upBack to login'))
-
-WebUI.click(findTestObject('Object Repository/Page_Sign up form/div_Email invalid'))
+WebUI.click(findTestObject('Object Repository/Page_/div_Email invalid'))
 
 WebUI.closeBrowser()
 
