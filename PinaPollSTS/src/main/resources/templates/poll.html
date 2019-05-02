@@ -5,8 +5,10 @@
 		<nav th:replace="fragments/header :: header"></nav>
 		
 		<div class="container pt-3">
+			<a th:href="@{/user/} + ${poll.user}" class="btn btn-secondary mb-4" th:text="${'Created by '} + ${poll.user}">Created by username</a>
 			<h1 th:text="${poll.question}">Poll title</h1>
 			<hr/>
+			
 			<div class="row m-0">
 				
 				<!-- Chart -->

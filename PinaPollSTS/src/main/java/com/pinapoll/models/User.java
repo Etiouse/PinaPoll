@@ -103,5 +103,8 @@ public class User {
 		userResponses.add(userResponse);
 	}
 
-
+	@Override
+	public String toString() {
+		return getName();
+	}
 }
