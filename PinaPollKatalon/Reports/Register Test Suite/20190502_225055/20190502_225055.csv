@@ -1,0 +1,27 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Register Test Suite,Chrome 73.0.3683.103,,2019-05-02 22:50:59,2019-05-02 22:51:37,37.622s,FAILED
+,,,,,,
+Test Cases/Register Test Cases/Register correct user,Chrome 73.0.3683.103,,2019-05-02 22:51:00,2019-05-02 22:51:11,10.477s,FAILED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 22:51:01,2019-05-02 22:51:09,7.505s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 22:51:09,2019-05-02 22:51:10,1.098s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 22:51:10,2019-05-02 22:51:11,0.773s,FAILED
+,,,,,,
+Test Cases/Register Test Cases/Register invalid username,Chrome 73.0.3683.103,,2019-05-02 22:51:11,2019-05-02 22:51:17,6.733s,FAILED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 22:51:11,2019-05-02 22:51:15,3.985s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 22:51:15,2019-05-02 22:51:16,1.270s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 22:51:16,2019-05-02 22:51:17,0.957s,FAILED
+,,,,,,
+Test Cases/Register Test Cases/Register invalid email,Chrome 73.0.3683.103,,2019-05-02 22:51:17,2019-05-02 22:51:24,6.517s,FAILED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 22:51:18,2019-05-02 22:51:22,4.130s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 22:51:22,2019-05-02 22:51:23,0.863s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 22:51:23,2019-05-02 22:51:24,0.783s,FAILED
+,,,,,,
+Test Cases/Register Test Cases/Register invalid password,Chrome 73.0.3683.103,,2019-05-02 22:51:24,2019-05-02 22:51:30,5.894s,FAILED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 22:51:24,2019-05-02 22:51:28,3.813s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 22:51:28,2019-05-02 22:51:29,0.858s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 22:51:29,2019-05-02 22:51:30,0.705s,FAILED
+,,,,,,
+Test Cases/Register Test Cases/Register existing user,Chrome 73.0.3683.103,,2019-05-02 22:51:30,2019-05-02 22:51:36,6.313s,FAILED
+"openBrowser("""")",Chrome 73.0.3683.103,,2019-05-02 22:51:30,2019-05-02 22:51:34,4.138s,PASSED
+"navigateToUrl(""http://localhost:8080/"")",Chrome 73.0.3683.103,,2019-05-02 22:51:34,2019-05-02 22:51:35,0.874s,PASSED
+"click(findTestObject(""Page_PinaPoll/a_Sign up""))",Chrome 73.0.3683.103,,2019-05-02 22:51:35,2019-05-02 22:51:36,0.792s,FAILED

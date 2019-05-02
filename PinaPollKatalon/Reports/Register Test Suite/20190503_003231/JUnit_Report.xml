@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Register Test Suite" time="10" tests="1" failures="0" errors="0">
+   <testsuite name="Register Test Suite" tests="1" failures="0" errors="0" time="10" timestamp="2019-05-03 00:32:46" hostname="etienne.husler - TIC17-HUSLERE.intra.eiaj.ch" id="Test Suites/Register Test Suite">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Dev\\INF3dlm-a\\Java Entreprise Edition\\workspace\\PinaPoll\\PinaPollKatalon\\Reports\\Register Test Suite\\20190503_003231"/>
+         <property name="logFiles" value="C:\\Dev\\INF3dlm-a\\Java Entreprise Edition\\workspace\\PinaPoll\\PinaPollKatalon\\Reports\\Register Test Suite\\20190503_003231\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="etienne.husler - TIC17-HUSLERE.intra.eiaj.ch"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="6.0.5.10"/>
+         <property name="browser" value="Chrome 73.0.3683.103"/>
+         <property name="hostAddress" value="157.26.66.40"/>
+         <property name="sessionId" value="694cd7f2ef7db6ad27c06992079ef177"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/Register Test Cases/Home" classname="Test Cases/Register Test Cases/Home" status="PASSED">
+         <system-out><![CDATA[2019-05-03 00:32:47 - [TEST_CASE][PASSED] - Test Cases/Register Test Cases/Home: Test Cases/Register Test Cases/Home
+
+2019-05-03 00:32:48 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 00:32:48 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-03 00:32:48 - [MESSAGE][INFO] - Action delay is set to 0 seconds
+
+2019-05-03 00:32:54 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 00:32:54 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/"): Navigate to 'http://localhost:8080/' successfully
+
+2019-05-03 00:32:55 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/' successfully
+
+2019-05-03 00:32:55 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-03 00:32:56 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-05-03 00:32:46 - [TEST_SUITE][PASSED] - Register Test Suite: Test Cases/Register Test Cases/Home]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

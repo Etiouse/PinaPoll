@@ -1,13 +1,7 @@
 package com.pinapoll.controllers;
 
-import java.awt.print.Printable;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -22,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pinapoll.models.Category;
@@ -71,7 +64,7 @@ public class PollController {
     }
     
     @RequestMapping(value = "/poll/create", method = RequestMethod.POST)
-    public ModelAndView addFruits(@Valid PollPojo pollPojo, BindingResult bindingResult, Authentication authentication, 
+    public ModelAndView addFruits(@Valid PollPojo pollPojo, BindingResult bindingResult, Authentication authentication,
     							  @RequestParam("response") List<String> responses,
     							  @RequestParam("select_category") String value) {
       	
@@ -80,9 +73,7 @@ public class PollController {
         
         User user = userService.findUserByName(authentication.getName());
         Category cat = categoryService.getWithName(value);
-        
-        //modelAndView.addObject("categories", categories);
-        
+
         pollPojo.setUser(user);
         pollPojo.setCategory(cat);
         
@@ -100,7 +91,6 @@ public class PollController {
 
         // Routing
         if (bindingResult.hasErrors()) {
-        	System.err.println(bindingResult.getAllErrors().get(0).toString());
             modelAndView.setViewName("poll-creation");
         } else {
         	Poll poll = new Poll();
@@ -198,11 +188,8 @@ public class PollController {
         	userResponse.setUser(user);
         	userResponse.setResponse(response);
             userResponseService.saveUserResponse(userResponse);
-        	//user.addUserResponse(userResponse);
-        	//userService.saveUser(user);
         }
 
-        //modelAndView.addObject("userResponse", userResponse);
         modelAndView.setViewName("redirect:/poll/" + id);
         return modelAndView;
     }

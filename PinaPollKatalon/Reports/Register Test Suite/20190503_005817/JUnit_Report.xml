@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Register Test Suite" time="42" tests="6" failures="0" errors="0">
+   <testsuite name="Register Test Suite" tests="6" failures="0" errors="0" time="42" timestamp="2019-05-03 00:58:21" hostname="etienne.husler - TIC17-HUSLERE.intra.eiaj.ch" id="Test Suites/Register Test Suite">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Dev\\INF3dlm-a\\Java Entreprise Edition\\workspace\\PinaPoll\\PinaPollKatalon\\Reports\\Register Test Suite\\20190503_005817"/>
+         <property name="logFiles" value="C:\\Dev\\INF3dlm-a\\Java Entreprise Edition\\workspace\\PinaPoll\\PinaPollKatalon\\Reports\\Register Test Suite\\20190503_005817\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="etienne.husler - TIC17-HUSLERE.intra.eiaj.ch"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="6.0.5.10"/>
+         <property name="browser" value="Chrome 73.0.3683.103"/>
+         <property name="hostAddress" value="157.26.66.40"/>
+         <property name="sessionId" value="97040d3fbba787ecd0680ad242d80152"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/Register Test Cases/Home" classname="Test Cases/Register Test Cases/Home" status="PASSED">
+         <system-out><![CDATA[2019-05-03 00:58:22 - [TEST_CASE][PASSED] - Test Cases/Register Test Cases/Home: Test Cases/Register Test Cases/Home
+
+2019-05-03 00:58:23 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 00:58:23 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-03 00:58:23 - [MESSAGE][INFO] - Action delay is set to 0 seconds
+
+2019-05-03 00:58:29 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 00:58:29 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/"): Navigate to 'http://localhost:8080/' successfully
+
+2019-05-03 00:58:30 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/' successfully
+
+2019-05-03 00:58:30 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-03 00:58:31 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Register Test Cases/Register correct user" classname="Test Cases/Register Test Cases/Register correct user" status="PASSED">
+         <system-out><![CDATA[2019-05-03 00:58:31 - [TEST_CASE][PASSED] - Test Cases/Register Test Cases/Register correct user: Test Cases/Register Test Cases/Register correct user
+
+2019-05-03 00:58:31 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 00:58:31 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-03 00:58:34 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 00:58:34 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/registration"): Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:35 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:35 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_name (1)"), "UserKatalon"): Text 'UserKatalon' is set on object 'Object Repository/Page_/input_Registration Form_name (1)'
+
+2019-05-03 00:58:35 - [MESSAGE][PASSED] - Text 'UserKatalon' is set on object 'Object Repository/Page_/input_Registration Form_name (1)'
+
+2019-05-03 00:58:35 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_email (1)"), "user@katalon.ch"): Text 'user@katalon.ch' is set on object 'Object Repository/Page_/input_Registration Form_email (1)'
+
+2019-05-03 00:58:36 - [MESSAGE][PASSED] - Text 'user@katalon.ch' is set on object 'Object Repository/Page_/input_Registration Form_email (1)'
+
+2019-05-03 00:58:36 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_/input_Registration Form_password (1)"), "4nvbrPglk7k="): Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (1)'
+
+2019-05-03 00:58:36 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (1)'
+
+2019-05-03 00:58:36 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/button_Sign up (1)")): Object: 'Object Repository/Page_/button_Sign up (1)' is clicked on
+
+2019-05-03 00:58:36 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/button_Sign up (1)' is clicked on
+
+2019-05-03 00:58:36 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/div_User has been registered successfully")): Object: 'Object Repository/Page_/div_User has been registered successfully' is clicked on
+
+2019-05-03 00:58:37 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/div_User has been registered successfully' is clicked on
+
+2019-05-03 00:58:37 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-03 00:58:37 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Register Test Cases/Register existing user" classname="Test Cases/Register Test Cases/Register existing user" status="PASSED">
+         <system-out><![CDATA[2019-05-03 00:58:37 - [TEST_CASE][PASSED] - Test Cases/Register Test Cases/Register existing user: Test Cases/Register Test Cases/Register existing user
+
+2019-05-03 00:58:38 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 00:58:38 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-03 00:58:41 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 00:58:41 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/registration"): Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:42 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:42 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_name (2)"), "TestUser"): Text 'TestUser' is set on object 'Object Repository/Page_/input_Registration Form_name (2)'
+
+2019-05-03 00:58:42 - [MESSAGE][PASSED] - Text 'TestUser' is set on object 'Object Repository/Page_/input_Registration Form_name (2)'
+
+2019-05-03 00:58:42 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_email (2)"), "a@aa.aa"): Text 'a@aa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (2)'
+
+2019-05-03 00:58:42 - [MESSAGE][PASSED] - Text 'a@aa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (2)'
+
+2019-05-03 00:58:42 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_/input_Registration Form_password (2)"), "4nvbrPglk7k="): Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (2)'
+
+2019-05-03 00:58:42 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (2)'
+
+2019-05-03 00:58:42 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/button_Sign up (2)")): Object: 'Object Repository/Page_/button_Sign up (2)' is clicked on
+
+2019-05-03 00:58:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/button_Sign up (2)' is clicked on
+
+2019-05-03 00:58:43 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_name (2)"), "TestUser"): Text 'TestUser' is set on object 'Object Repository/Page_/input_Registration Form_name (2)'
+
+2019-05-03 00:58:43 - [MESSAGE][PASSED] - Text 'TestUser' is set on object 'Object Repository/Page_/input_Registration Form_name (2)'
+
+2019-05-03 00:58:43 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_email (2)"), "a@aa.aa"): Text 'a@aa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (2)'
+
+2019-05-03 00:58:43 - [MESSAGE][PASSED] - Text 'a@aa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (2)'
+
+2019-05-03 00:58:43 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_/input_Registration Form_password (2)"), "4nvbrPglk7k="): Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (2)'
+
+2019-05-03 00:58:43 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (2)'
+
+2019-05-03 00:58:43 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/button_Sign up (2)")): Object: 'Object Repository/Page_/button_Sign up (2)' is clicked on
+
+2019-05-03 00:58:44 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/button_Sign up (2)' is clicked on
+
+2019-05-03 00:58:44 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/div_Name already taken")): Object: 'Object Repository/Page_/div_Name already taken' is clicked on
+
+2019-05-03 00:58:44 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/div_Name already taken' is clicked on
+
+2019-05-03 00:58:44 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/div_There is already a user registered with that email")): Object: 'Object Repository/Page_/div_There is already a user registered with that email' is clicked on
+
+2019-05-03 00:58:44 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/div_There is already a user registered with that email' is clicked on
+
+2019-05-03 00:58:44 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-03 00:58:45 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Register Test Cases/Register invalid email" classname="Test Cases/Register Test Cases/Register invalid email" status="PASSED">
+         <system-out><![CDATA[2019-05-03 00:58:45 - [TEST_CASE][PASSED] - Test Cases/Register Test Cases/Register invalid email: Test Cases/Register Test Cases/Register invalid email
+
+2019-05-03 00:58:45 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 00:58:45 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-03 00:58:48 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 00:58:48 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/registration"): Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:49 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:49 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_name (3)"), "TestUserKatalon"): Text 'TestUserKatalon' is set on object 'Object Repository/Page_/input_Registration Form_name (3)'
+
+2019-05-03 00:58:49 - [MESSAGE][PASSED] - Text 'TestUserKatalon' is set on object 'Object Repository/Page_/input_Registration Form_name (3)'
+
+2019-05-03 00:58:49 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_email (3)"), "aaaa"): Text 'aaaa' is set on object 'Object Repository/Page_/input_Registration Form_email (3)'
+
+2019-05-03 00:58:50 - [MESSAGE][PASSED] - Text 'aaaa' is set on object 'Object Repository/Page_/input_Registration Form_email (3)'
+
+2019-05-03 00:58:50 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_/input_Registration Form_password (3)"), "4nvbrPglk7k="): Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (3)'
+
+2019-05-03 00:58:50 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (3)'
+
+2019-05-03 00:58:50 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/button_Sign up (3)")): Object: 'Object Repository/Page_/button_Sign up (3)' is clicked on
+
+2019-05-03 00:58:50 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/button_Sign up (3)' is clicked on
+
+2019-05-03 00:58:50 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/div_Email invalid")): Object: 'Object Repository/Page_/div_Email invalid' is clicked on
+
+2019-05-03 00:58:50 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/div_Email invalid' is clicked on
+
+2019-05-03 00:58:50 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-03 00:58:51 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Register Test Cases/Register invalid password" classname="Test Cases/Register Test Cases/Register invalid password" status="PASSED">
+         <system-out><![CDATA[2019-05-03 00:58:51 - [TEST_CASE][PASSED] - Test Cases/Register Test Cases/Register invalid password: Test Cases/Register Test Cases/Register invalid password
+
+2019-05-03 00:58:52 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 00:58:52 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-03 00:58:55 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 00:58:55 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/registration"): Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:55 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:58:55 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_name (4)"), "Etet"): Text 'Etet' is set on object 'Object Repository/Page_/input_Registration Form_name (4)'
+
+2019-05-03 00:58:56 - [MESSAGE][PASSED] - Text 'Etet' is set on object 'Object Repository/Page_/input_Registration Form_name (4)'
+
+2019-05-03 00:58:56 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_email (4)"), "a@aaa.aa"): Text 'a@aaa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (4)'
+
+2019-05-03 00:58:56 - [MESSAGE][PASSED] - Text 'a@aaa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (4)'
+
+2019-05-03 00:58:56 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_/input_Registration Form_password (4)"), "HeCM15nHKBI="): Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (4)'
+
+2019-05-03 00:58:56 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (4)'
+
+2019-05-03 00:58:56 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/button_Sign up (4)")): Object: 'Object Repository/Page_/button_Sign up (4)' is clicked on
+
+2019-05-03 00:58:57 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/button_Sign up (4)' is clicked on
+
+2019-05-03 00:58:57 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/div_Password must contains at least 4 characters")): Object: 'Object Repository/Page_/div_Password must contains at least 4 characters' is clicked on
+
+2019-05-03 00:58:57 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/div_Password must contains at least 4 characters' is clicked on
+
+2019-05-03 00:58:57 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-03 00:58:57 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Register Test Cases/Register invalid username" classname="Test Cases/Register Test Cases/Register invalid username" status="PASSED">
+         <system-out><![CDATA[2019-05-03 00:58:57 - [TEST_CASE][PASSED] - Test Cases/Register Test Cases/Register invalid username: Test Cases/Register Test Cases/Register invalid username
+
+2019-05-03 00:58:58 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-03 00:58:58 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-03 00:59:01 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-03 00:59:01 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/registration"): Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:59:02 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/registration' successfully
+
+2019-05-03 00:59:02 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_name (5)"), "e"): Text 'e' is set on object 'Object Repository/Page_/input_Registration Form_name (5)'
+
+2019-05-03 00:59:02 - [MESSAGE][PASSED] - Text 'e' is set on object 'Object Repository/Page_/input_Registration Form_name (5)'
+
+2019-05-03 00:59:02 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_/input_Registration Form_email (5)"), "aa@aa.aa"): Text 'aa@aa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (5)'
+
+2019-05-03 00:59:02 - [MESSAGE][PASSED] - Text 'aa@aa.aa' is set on object 'Object Repository/Page_/input_Registration Form_email (5)'
+
+2019-05-03 00:59:02 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_/input_Registration Form_password (5)"), "4nvbrPglk7k="): Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (5)'
+
+2019-05-03 00:59:02 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_/input_Registration Form_password (5)'
+
+2019-05-03 00:59:02 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/button_Sign up (5)")): Object: 'Object Repository/Page_/button_Sign up (5)' is clicked on
+
+2019-05-03 00:59:03 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/button_Sign up (5)' is clicked on
+
+2019-05-03 00:59:03 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_/div_Name must contains at least 4 characters")): Object: 'Object Repository/Page_/div_Name must contains at least 4 characters' is clicked on
+
+2019-05-03 00:59:03 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_/div_Name must contains at least 4 characters' is clicked on
+
+2019-05-03 00:59:03 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-03 00:59:04 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-05-03 00:58:21 - [TEST_SUITE][PASSED] - Register Test Suite: Test Cases/Register Test Cases/Register invalid username]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

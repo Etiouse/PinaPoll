@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pinapoll.models.Poll;
 import com.pinapoll.models.Response;
 import com.pinapoll.models.User;
 import com.pinapoll.models.UserResponse;
