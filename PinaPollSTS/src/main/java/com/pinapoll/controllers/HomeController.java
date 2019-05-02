@@ -23,6 +23,8 @@ import com.pinapoll.services.UserService;
 @Controller
 public class HomeController {
 	
+	private final String INDEX = "index";
+	
 	@Autowired
 	private UserService userService;
 	
@@ -50,7 +52,7 @@ public class HomeController {
         }
                 
         modelAndView.addObject("polls", polls);
-        modelAndView.setViewName("index");
+        modelAndView.setViewName(INDEX);
         return modelAndView;
     }
     
@@ -59,12 +61,12 @@ public class HomeController {
     {
     	if (name.equals(""))
     	{
-    		// TODO message erreur
+    		
     	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<User> users = userService.searchUserWithName(name);
     	modelAndView.addObject("users", users);
-        modelAndView.setViewName("index");
+        modelAndView.setViewName(INDEX);
     	return modelAndView;
     }
     
@@ -73,13 +75,12 @@ public class HomeController {
     {
     	if (question.equals("") && categoryName.equals(""))
     	{
-    		// TODO message erreur
+    		
     	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
-//    	System.out.println("RESULT : " + polls.get(0).getQuestion());
     	modelAndView.addObject("polls", polls);
-        modelAndView.setViewName("index");
+        modelAndView.setViewName(INDEX);
     	return modelAndView;
     }
     

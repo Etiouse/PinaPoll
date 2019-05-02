@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pinapoll.models.User;
@@ -20,6 +18,9 @@ import java.util.regex.Pattern;
 @Controller
 public class LoginController {
 	
+	private final String REGISTRATION = "registration";
+	private final String ERROR_USER = "error.user";
+	
     @Autowired
     private UserService userService;
     
@@ -27,7 +28,7 @@ public class LoginController {
     private UserRepository userRepository;
 	   
     // Redirect the user to the login
-	@RequestMapping(value= {"/login"}, method = RequestMethod.GET)
+	@GetMapping(value= "/login")
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
@@ -40,7 +41,7 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("registration");
+        modelAndView.setViewName(REGISTRATION);
         
         return modelAndView;
     }
@@ -55,57 +56,46 @@ public class LoginController {
         // Name controls
         User userNameExists = userService.findUserByName(user.getName());
         if (userNameExists != null) {
-            bindingResult.rejectValue("name", "error.user", "*Name already taken");
+            bindingResult.rejectValue("name", ERROR_USER, "*Name already taken");
         }
         if (user.getName().length() < 4 && user.getName().length() != 0) {
-        	bindingResult.rejectValue("name", "error.user", "*Name must contains at least 4 characters");
+        	bindingResult.rejectValue("name", ERROR_USER, "*Name must contains at least 4 characters");
         }
         if (user.getName().length() > 20 && user.getName().length() != 0) {
-        	bindingResult.rejectValue("name", "error.user", "*Name must contains a maximum of 20 characters");
+        	bindingResult.rejectValue("name", ERROR_USER, "*Name must contains a maximum of 20 characters");
         }
         
         // Email controls
         User userMailExists = userRepository.findByEmail(user.getEmail());
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$"; 
         if (userMailExists != null) {
-        	bindingResult.rejectValue("email", "error.user", "*There is already a user registered with that email");
+        	bindingResult.rejectValue("email", ERROR_USER, "*There is already a user registered with that email");
         }
         Pattern pat = Pattern.compile(emailRegex); 
         if (!pat.matcher(user.getEmail()).matches() && user.getEmail().length() != 0) {
-        	bindingResult.rejectValue("email", "error.user", "*Email invalid");
+        	bindingResult.rejectValue("email", ERROR_USER, "*Email invalid");
         }
         
         // Password controls
         if (user.getPassword().length() < 4 && user.getPassword().length() != 0) {
-        	bindingResult.rejectValue("password", "error.user", "*Password must contains at least 4 characters");
+        	bindingResult.rejectValue("password", ERROR_USER, "*Password must contains at least 4 characters");
         }
         if (user.getPassword().length() > 20 && user.getPassword().length() != 0) {
-        	bindingResult.rejectValue("password", "error.user", "*Password must contains a maximum of 20 characters");
+        	bindingResult.rejectValue("password", ERROR_USER, "*Password must contains a maximum of 20 characters");
         }
         
         // Routing
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName(REGISTRATION);
         } else {
             userService.saveUser(user);
             modelAndView.addObject("success", true);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName(REGISTRATION);
 
         }
         
         return modelAndView;
     }
-    
-	/*@RequestMapping(value="/admin/home", method = RequestMethod.GET)
-	public ModelAndView home(){
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByName(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-		modelAndView.setViewName("admin/home");
-		return modelAndView;
-	}*/
 }

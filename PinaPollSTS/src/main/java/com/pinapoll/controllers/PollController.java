@@ -13,8 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -62,7 +60,7 @@ public class PollController {
         return modelAndView;
     }
     
-    @RequestMapping(value = "/poll/create", method = RequestMethod.POST)
+    @PostMapping(value = "/poll/create")
     public ModelAndView addFruits(@Valid Poll poll, BindingResult bindingResult, Authentication authentication, 
     							  @RequestParam("response") List<String> responses,
     							  @RequestParam("select_category") String value) {
@@ -72,8 +70,6 @@ public class PollController {
         
         User user = userService.findUserByName(authentication.getName());
         Category cat = categoryService.getWithName(value);
-        
-        //modelAndView.addObject("categories", categories);
         
         poll.setUser(user);
         poll.setCategory(cat);
@@ -92,7 +88,6 @@ public class PollController {
 
         // Routing
         if (bindingResult.hasErrors()) {
-        	System.err.println(bindingResult.getAllErrors().get(0).toString());
             modelAndView.setViewName("poll-creation");
         } else {
             pollService.savePoll(poll);
@@ -184,11 +179,8 @@ public class PollController {
         	userResponse.setUser(user);
         	userResponse.setResponse(response);
             userResponseService.saveUserResponse(userResponse);
-        	//user.addUserResponse(userResponse);
-        	//userService.saveUser(user);
         }
 
-        //modelAndView.addObject("userResponse", userResponse);
         modelAndView.setViewName("redirect:/poll/" + id);
         return modelAndView;
     }
