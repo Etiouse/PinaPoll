@@ -7,11 +7,9 @@
 		<div class="container pt-3">
 			
 			<!--  User Search Result -->
-			<div class="card" th:each="user: ${users}">
 				<ul class="list-group">
-					<li class="list-group-item"><a th:href="@{/user/} + ${user.name}" th:text="${user.name}"> Name </a></li>
+					<li class="list-group-item" th:each="user: ${users}"><a th:href="@{/user/} + ${user.name}" th:text="${user.name}"> Name </a></li>
 				</ul>
-			</div>
 			<br>
 			
 			<!-- Complex Search Bar -->
