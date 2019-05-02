@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pinapoll.models.User;
+import com.pinapoll.pojo.UserPojo;
 import com.pinapoll.repositories.UserRepository;
 import com.pinapoll.services.UserService;
 
@@ -39,8 +40,8 @@ public class LoginController {
     @GetMapping(value="/registration")
     public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
-        User user = new User();
-        modelAndView.addObject("user", user);
+        UserPojo userPojo = new UserPojo();
+        modelAndView.addObject("userPojo", userPojo);
         modelAndView.setViewName(REGISTRATION);
         
         return modelAndView;
@@ -48,39 +49,39 @@ public class LoginController {
     
     // Create the user from the registration inputs (if valid)
     @PostMapping(value = "/registration")
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    public ModelAndView createNewUser(@Valid UserPojo userPojo, BindingResult bindingResult) {
     	
     	// Model and View
         ModelAndView modelAndView = new ModelAndView();
         
         // Name controls
-        User userNameExists = userService.findUserByName(user.getName());
+        User userNameExists = userService.findUserByName(userPojo.getName());
         if (userNameExists != null) {
             bindingResult.rejectValue("name", ERROR_USER, "*Name already taken");
         }
-        if (user.getName().length() < 4 && user.getName().length() != 0) {
+        if (userPojo.getName().length() < 4 && userPojo.getName().length() != 0) {
         	bindingResult.rejectValue("name", ERROR_USER, "*Name must contains at least 4 characters");
         }
-        if (user.getName().length() > 20 && user.getName().length() != 0) {
+        if (userPojo.getName().length() > 20 && userPojo.getName().length() != 0) {
         	bindingResult.rejectValue("name", ERROR_USER, "*Name must contains a maximum of 20 characters");
         }
         
         // Email controls
-        User userMailExists = userRepository.findByEmail(user.getEmail());
+        User userMailExists = userRepository.findByEmail(userPojo.getEmail());
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$"; 
         if (userMailExists != null) {
         	bindingResult.rejectValue("email", ERROR_USER, "*There is already a user registered with that email");
         }
         Pattern pat = Pattern.compile(emailRegex); 
-        if (!pat.matcher(user.getEmail()).matches() && user.getEmail().length() != 0) {
+        if (!pat.matcher(userPojo.getEmail()).matches() && userPojo.getEmail().length() != 0) {
         	bindingResult.rejectValue("email", ERROR_USER, "*Email invalid");
         }
         
         // Password controls
-        if (user.getPassword().length() < 4 && user.getPassword().length() != 0) {
+        if (userPojo.getPassword().length() < 4 && userPojo.getPassword().length() != 0) {
         	bindingResult.rejectValue("password", ERROR_USER, "*Password must contains at least 4 characters");
         }
-        if (user.getPassword().length() > 20 && user.getPassword().length() != 0) {
+        if (userPojo.getPassword().length() > 20 && userPojo.getPassword().length() != 0) {
         	bindingResult.rejectValue("password", ERROR_USER, "*Password must contains a maximum of 20 characters");
         }
         
@@ -88,6 +89,13 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName(REGISTRATION);
         } else {
+        	User user = new User();
+        	user.setActive(userPojo.getActive());
+        	user.setEmail(userPojo.getEmail());
+        	user.setName(userPojo.getName());
+        	user.setPassword(userPojo.getPassword());
+        	user.setRoles(userPojo.getRoles());
+        	
             userService.saveUser(user);
             modelAndView.addObject("success", true);
             modelAndView.addObject("successMessage", "User has been registered successfully");
