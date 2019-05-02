@@ -48,7 +48,7 @@ public class HomeController {
     
     private ModelAndView getPage(int page){
     	ModelAndView modelAndView = new ModelAndView();
-        Page<Poll> polls = pollService.getAll(PageRequest.of(page-1, 3));
+        Page<Poll> polls = pollService.getAll(PageRequest.of(page-1, 6));
 
        	int totalPages = polls.getTotalPages();
         if(totalPages > 0) {
@@ -63,7 +63,7 @@ public class HomeController {
         return modelAndView;
     }
     
-    @GetMapping("/search_user")
+    @PostMapping("/search_user")
     public ModelAndView searchUser(@RequestParam String name)
     {
     	ModelAndView modelAndView = new ModelAndView();
@@ -82,16 +82,18 @@ public class HomeController {
     	return modelAndView;
     }
     
-    @GetMapping("/search_poll")
+    @PostMapping("/search_poll")
     public ModelAndView searchPoll(@RequestParam(defaultValue = "") String question, @RequestParam(defaultValue = "") String categoryName)
     {
     	ModelAndView modelAndView = new ModelAndView();
     	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
     	
     	boolean no_result = false;
-    	if (polls.size() == 0)
+    	if (polls == null || polls.size() == 0)
     	{
     		no_result = true;
+    		modelAndView.setViewName("redirect:/");
+    		return modelAndView;
     	}
     	
     	modelAndView.addObject("user_search_result", false);

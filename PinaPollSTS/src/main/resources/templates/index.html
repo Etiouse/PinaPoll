@@ -17,7 +17,7 @@
 			
 			<div th:if="${!user_search_result}">
 				<!-- Complex Search Bar -->
-				<form method="GET" action="/search_poll">
+				<form method="POST" action="/search_poll">
 					<div class="input-group mb-3">
 						<input type="text" name="question" class="form-control" placeholder="Enter a poll question..." aria-label="Recipient's username">
 						<input type="text" name="categoryName" class="form-control" placeholder="Enter a poll category..." aria-label="Recipient's username">
@@ -36,7 +36,7 @@
 						<h1>No result !</h1>	
 					</div>
 					<div th:if="${!no_result}">
-						<h1>Searched polls :</h1>	
+						<h1>Searched polls</h1>	
 					</div>
 				</div>
 					
