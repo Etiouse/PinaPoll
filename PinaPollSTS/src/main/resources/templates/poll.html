@@ -5,17 +5,19 @@
 		<nav th:replace="fragments/header :: header"></nav>
 		
 		<div class="container pt-3">
+			<a th:href="@{/user/} + ${poll.user}" class="btn btn-secondary mb-4" th:text="${'Created by '} + ${poll.user}">Created by username</a>
 			<h1 th:text="${poll.question}">Poll title</h1>
 			<hr/>
+			
 			<div class="row m-0">
 				
 				<!-- Chart -->
-				<div class="p-0 col-12 col-md-6 col-lg-4">
-					<canvas class="border rounded w-100" width="100px" height="100px"></canvas>
+				<div class="p-0 col-12 col-md-6 col-lg-6">
+					<div id="chart_display" style="height: 500px"></div>
 				</div>
 				
 				<!-- Answers -->
-				<div class="col-12 col-md-6 col-lg-8">
+				<div class="col-12 col-md-6 col-lg-6">
 					<!-- Not connected 
 					<div class="mb-3">Choice 1</div>
 					<div class="mb-3">Choice 2</div> -->
@@ -25,15 +27,92 @@
 					<div class="mb-3 ans-green answer">Choice 2</div> -->
 					
 					<!-- Connected no answer -->
-					<form id="answer-poll" th:action="@{/poll/} + ${poll.id}" method="post" role="form">
+					<form th:if="${!answered}" id="answer-poll" th:action="@{/poll/} + ${poll.id}" method="post" role="form">
 						<div class="form-check mb-3" th:each="response: ${responses}">
 							<input class="form-check-input" type="radio" name="radioAnswer" id="answer" th:value="${response.description}" checked>
 							<label class="form-check-label" th:text="${response.description}">Choice</label>
 						</div>
 						<button type="submit" class="btn btn-success w-100">Submit answer</button>
 					</form>
+					
+					<h3 class="font-italic text-success" th:if="${answered}" th:text="${'You answered '} + ${answer}">You answered</h3>
 				</div>
 			</div>
 		</div>
+		
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script th:inline="javascript">
+		/*<![CDATA[*/
+		
+			Highcharts.chart('chart_display', {
+				chart : {
+					type : 'pie',
+					options3d : {
+						enabled : false,
+						alpha : 50,
+						beta : 0,
+					}
+				},
+				exporting: { 
+					enabled: false 
+				},
+				title : {
+					text : 'asdad',
+					style: {
+				        display: 'none'
+				    }
+				},
+				tooltip : {
+					pointFormat : '{series.name}: <b>{point.y}</b>',
+					enabled : /*[[${answered}]]*/
+				},
+				plotOptions : {
+					pie : {
+						allowPointSelect : true,
+						cursor : 'pointer',
+						depth : 35,
+						dataLabels: {
+			                enabled: false
+			            },
+			            showInLegend: /*[[${answered}]]*/
+					}
+				},
+				series : [ {
+					type : 'pie',
+					name : 'Number of Answer',
+					data: (function () {
+			            // generate an array of random data
+			            var data = [], i;
+			            
+			            var questions = [];
+			            var nbAnswers = [];
+			            
+			            /*[# th:each="question : ${questions}"]*/
+			            questions.push(/*[[${question}]]*/);
+			    		/*[/]*/
+			    		
+			    		/*[# th:each="nbAnswer : ${nbAnswers}"]*/
+			            nbAnswers.push(/*[[${nbAnswer}]]*/);
+			    		/*[/]*/
+			    		
+			    		console.log(questions);
+			    		console.log(nbAnswers);
+			    		
+			    		for (i = 0; i < questions.length; i += 1){
+			    			data.push([
+			                    questions[i],
+			                    nbAnswers[i]
+			                ]);
+			    			console.log("coucou");
+			    		}
+			            
+			            return data;
+			        }())
+				} ]
+			});
+		   /*]]>*/
+		</script>
 	</body>
 </html>

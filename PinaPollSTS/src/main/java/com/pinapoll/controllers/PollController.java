@@ -1,6 +1,13 @@
 package com.pinapoll.controllers;
 
+import java.awt.print.Printable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -117,11 +124,47 @@ public class PollController {
     	ModelAndView modelAndView = new ModelAndView();
     	
     	Poll poll = pollService.getPoll(id);
+    	User userConnected = userService.findUserByName(authentication.getName());
     	List<Response> responses = responseService.getResponsesForPoll(poll);
     	
     	modelAndView.addObject("poll", poll);
     	modelAndView.addObject("responses", responses);
         modelAndView.setViewName("poll");
+
+        // get answer if already answered
+        boolean answered = false;
+        String answer = "";
+        
+        for(Response r : poll.getResponses()) { 
+        	if(userResponseService.userResponseExist(userConnected, r)) {
+        		answered = true;
+        		answer = r.getDescription();
+        	}
+        }
+               
+        modelAndView.addObject("answer", answer);
+        modelAndView.addObject("answered", answered);
+
+        // get all answers for the poll
+        List<String> responsesDescription = new ArrayList<>();
+        List<Integer> nbAnswers = new ArrayList<>();
+        for (Response response : responses)
+        {
+        	responsesDescription.add(response.getDescription());
+        	nbAnswers.add(0);        	
+        }
+        
+        List<UserResponse> userResponses = userResponseService.respongetAllResponseWithPollId(id);
+        
+        for (int i = 0; i < userResponses.size(); i++)
+        {
+        	int index = responses.indexOf(userResponses.get(i).getResponse());
+        	nbAnswers.set(index, nbAnswers.get(index) + 1);
+        }
+       
+    	modelAndView.addObject("questions", responsesDescription);
+    	modelAndView.addObject("nbAnswers", nbAnswers);
+    	
         return modelAndView;
     }
     
@@ -162,14 +205,19 @@ public class PollController {
     	// Model and View
         ModelAndView modelAndView = new ModelAndView();
         
-        User user = userService.findUserByName(authentication.getName());
         Poll poll = pollService.getPoll(id);
+        modelAndView.setViewName("redirect:/user/" + poll.getUser().getName());
+        
+        if(authentication == null) {
+        	return modelAndView;
+        }
+        
+        User user = userService.findUserByName(authentication.getName());
         
         if(user.getName().equals(poll.getUser().getName())) {
         	pollService.deletePoll(poll);
         }
-
-        modelAndView.setViewName("redirect:/user/" + user.getName());
+        
         return modelAndView;
     }
     

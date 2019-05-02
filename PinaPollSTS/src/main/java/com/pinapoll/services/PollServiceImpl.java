@@ -81,7 +81,7 @@ public class PollServiceImpl implements PollService {
 		else if (question.length() != 0)
 		{
 	    	System.out.println("question : " +  question);
-			return pollRepository.findByQuestion(question);
+			return pollRepository.findByQuestionContaining(question);
 		}
 		else 
 		{

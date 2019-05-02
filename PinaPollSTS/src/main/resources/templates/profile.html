@@ -12,17 +12,21 @@
 			
 			<a th:href="@{/poll/create/}" th:if="${can_create}" class="btn btn-success mb-3">Create poll</a>
 			
+
+			
 			<div class="card-columns">
-				<div class="card" th:each="poll: ${polls}">
-					<div class="card-body">
-						<a th:href="@{/poll/delete/} + ${poll.id}" class="close" th:if="${can_delete}"><span style="color: red">&times;</span></a>
-						<h5 class="card-title" th:text="${poll.question}"> Question </h5>
-						<!-- CHART PREVIEW -->
-						<!--   <canvas class="border rounded mb-2 w-100" width="100px" height="100px"></canvas> -->
-						<a th:href="@{/poll/} + ${poll.id}" class="btn btn-sm btn-outline-primary w-100">Show poll</a>
-					</div>
-				</div>				
-			</div>
+                <div class="card bg-light" th:each="poll: ${polls}">
+                    <div class="card-body">
+                    	<a th:href="@{/poll/delete/} + ${poll.id}" class="close" th:if="${can_delete}"><span style="color: red">&times;</span></a>
+                        <h5 class="card-title" th:text="${poll.question}"> Question </h5>
+                        <ul class="mb-1">
+						  <li th:each="response: ${poll.responses}" th:text="${response.description}"></li>
+						</ul>
+						<span class="badge badge-secondary" th:text="${poll.category}"></span>
+                        <a th:href="@{/poll/} + ${poll.id}" class="btn btn-sm btn-outline-dark w-100 mt-2">Show poll</a>
+                    </div>
+                </div>
+            </div>
 			
 		</div>
 	</body>
