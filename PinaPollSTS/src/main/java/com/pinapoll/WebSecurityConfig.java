@@ -49,10 +49,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			
 				// All users
 				.antMatchers("/").permitAll()
+				.antMatchers("/{\\d+}").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/registration").permitAll()
-				.antMatchers("/user/**").permitAll()
-				.antMatchers("/poll/**").permitAll()
+				.antMatchers("/user/**").authenticated()
+				.antMatchers("/poll/**").authenticated()
 				
 				// Authenticated users
 				

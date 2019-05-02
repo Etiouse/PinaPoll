@@ -200,7 +200,7 @@ public class PollController {
         
         User user = userService.findUserByName(authentication.getName());
         
-        if(user.getName().equals(poll.getUser().getName())) {
+        if(user.getName().equals(poll.getUser().getName()) || user.getActive() == 2) {
         	pollService.deletePoll(poll);
         }
         

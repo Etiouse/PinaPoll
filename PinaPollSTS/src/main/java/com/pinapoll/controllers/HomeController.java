@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,42 +44,61 @@ public class HomeController {
     
     private ModelAndView getPage(int page){
     	ModelAndView modelAndView = new ModelAndView();
-        Page<Poll> polls = pollService.getAll(PageRequest.of(page-1, 3));
+        Page<Poll> polls = pollService.getAll(PageRequest.of(page-1, 6));
 
        	int totalPages = polls.getTotalPages();
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             modelAndView.addObject("page_numbers", pageNumbers);
         }
-                
+        
+        modelAndView.addObject("user_search_result", false);
+    	modelAndView.addObject("poll_search_result", false);
         modelAndView.addObject("polls", polls);
         modelAndView.setViewName(INDEX);
         return modelAndView;
     }
     
-    @GetMapping("/search_user")
+    @PostMapping("/search_user")
     public ModelAndView searchUser(@RequestParam String name)
     {
-    	if (name.equals(""))
-    	{
-    		
-    	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<User> users = userService.searchUserWithName(name);
+    	
+    	boolean no_result = false;
+    	if (users.size() == 0)
+    	{
+    		no_result = true;
+    	}
+
+    	modelAndView.addObject("user_search_result", true);
+    	modelAndView.addObject("no_result", no_result);
     	modelAndView.addObject("users", users);
         modelAndView.setViewName(INDEX);
     	return modelAndView;
     }
     
-    @GetMapping("/search_poll")
+    @PostMapping("/search_poll")
     public ModelAndView searchPoll(@RequestParam(defaultValue = "") String question, @RequestParam(defaultValue = "") String categoryName)
     {
-    	if (question.equals("") && categoryName.equals(""))
-    	{
-    		
-    	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
+    	
+    	boolean no_result = false;
+		if (polls == null)
+    	{
+    		modelAndView.setViewName("redirect:/");
+    		return modelAndView;
+    	}
+		
+    	if (polls.size() == 0)
+    	{
+    		no_result = true;
+    	}
+    	
+    	modelAndView.addObject("user_search_result", false);
+    	modelAndView.addObject("poll_search_result", true);
+    	modelAndView.addObject("no_result", no_result);
     	modelAndView.addObject("polls", polls);
         modelAndView.setViewName(INDEX);
     	return modelAndView;

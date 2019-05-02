@@ -11,9 +11,7 @@
 			<hr/>
 			
 			<a th:href="@{/poll/create/}" th:if="${can_create}" class="btn btn-success mb-3">Create poll</a>
-			
-
-			
+						
 			<div class="card-columns">
                 <div class="card bg-light" th:each="poll: ${polls}">
                     <div class="card-body">
