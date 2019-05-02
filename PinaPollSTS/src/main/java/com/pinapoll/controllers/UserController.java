@@ -30,8 +30,8 @@ public class UserController {
     	
     	User user = userService.findUserByName(name);
     	List<Poll> polls = pollService.getPollWithUser(user);
-    	
-    	boolean canCreate = authentication.getName().equals(user.getName());
+
+    	boolean canCreate = authentication!=null && authentication.getName().equals(user.getName());
     	
         modelAndView.addObject("user", user);
         modelAndView.addObject("polls", polls);
