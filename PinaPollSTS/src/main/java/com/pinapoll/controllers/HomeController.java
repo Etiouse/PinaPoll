@@ -89,11 +89,15 @@ public class HomeController {
     	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
     	
     	boolean no_result = false;
-    	if (polls == null || polls.size() == 0)
+		if (polls == null)
     	{
-    		no_result = true;
     		modelAndView.setViewName("redirect:/");
     		return modelAndView;
+    	}
+		
+    	if (polls.size() == 0)
+    	{
+    		no_result = true;
     	}
     	
     	modelAndView.addObject("user_search_result", false);
