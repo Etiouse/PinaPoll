@@ -84,6 +84,7 @@ public class HomeController {
     	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
+//    	System.out.println("RESULT : " + polls.get(0).getQuestion());
     	modelAndView.addObject("polls", polls);
         modelAndView.setViewName("index");
     	return modelAndView;

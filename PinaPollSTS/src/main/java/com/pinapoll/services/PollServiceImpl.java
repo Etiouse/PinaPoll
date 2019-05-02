@@ -66,7 +66,8 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<Poll> complexPollsSearch(String question, String categoryName) {
 		// TODO Auto-generated method stub
-		
+
+    	System.out.println("question : " +  question + ", category : " + categoryName);
 //		if (question == "" && categoryName == "")
 		if (question.length() == 0 && categoryName.length() == 0)
 		{
@@ -76,19 +77,18 @@ public class PollServiceImpl implements PollService {
 		else if (question.length() != 0 && categoryName.length() != 0)
 		{
 	    	System.out.println("question : " +  question + ", category : " + categoryName);
-//			return pollRepository.getPollWithQuestionCategory(String question, categoryString category);
+			return pollRepository.findByQuestionCategory(question, categoryName);
 		}
 		else if (question.length() != 0)
 		{
 	    	System.out.println("question : " +  question);
-//			return pollRepository.findByCategoryName(categoryName);
+			return pollRepository.findByQuestion(question);
 		}
 		else 
 		{
 	    	System.out.println("category : " + categoryName);
-			return pollRepository.findByQuestion(question);
+			return pollRepository.findByCategoryName(categoryName);
 		}
-		return null;
 	}
 
 }

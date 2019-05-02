@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.pinapoll.models.Category;
@@ -27,7 +29,10 @@ public interface PollRepository extends JpaRepository<Poll, Integer> {
 	
 	List<Poll> findByQuestion(String question);
 	
-//	@Query("SELECT u FROM User u WHERE u.status = 1")
-//	List<Poll> findByCategoryName(@Param("categoryName")String categoryName);
+	@Query(value = "SELECT p.* FROM poll p, category c WHERE c.name = :categoryName AND c.id = p.category", nativeQuery = true)
+	List<Poll> findByCategoryName(@Param("categoryName")String categoryName);
+	
+	@Query(value = "SELECT p.* FROM poll p, category c WHERE c.name = :categoryName AND c.id = p.category AND p.question = :question", nativeQuery = true)
+	List<Poll> findByQuestionCategory(String question, String categoryName);
 	
 }
