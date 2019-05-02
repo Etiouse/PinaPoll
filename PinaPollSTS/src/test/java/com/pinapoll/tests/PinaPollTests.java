@@ -1,4 +1,6 @@
-/*package com.example.demo;
+package com.pinapoll.tests;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +13,7 @@ public class PinaPollTests {
 
 	@Test
 	public void contextLoads() {
+		assertEquals(1, 1);
 	}
 
-}*/
+}
