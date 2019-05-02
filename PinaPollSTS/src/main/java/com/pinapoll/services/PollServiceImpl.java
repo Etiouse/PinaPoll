@@ -3,6 +3,8 @@ package com.pinapoll.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.pinapoll.models.Category;
@@ -56,8 +58,8 @@ public class PollServiceImpl implements PollService {
 	}
 
 	@Override
-	public List<Poll> getAll() {
-		return pollRepository.findAll();
+	public Page<Poll> getAll(Pageable pageable) {
+		return pollRepository.findAll(pageable);
 	}
 
 }
