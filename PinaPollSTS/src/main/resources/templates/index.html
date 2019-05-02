@@ -1,17 +1,29 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>PinaPoll</title>
-	</head>
+	<head th:replace="fragments/head :: head"></head>
 	<body>
-		<div th:insert="fragments/header :: header"></div>
+		<nav th:replace="fragments/header :: header"></nav>
 		
 		<div class="container pt-3">
 			
 			<!--  User Search Result -->
 			<div class="card" th:each="user: ${users}">
-				<div th:text="${user.name}"> Name </div>
+				<ul class="list-group">
+					<li class="list-group-item"><a th:href="@{/user/} + ${user.name}" th:text="${user.name}"> Name </a></li>
+				</ul>
 			</div>
+			<br>
+			
+			<!-- Complex Search Bar -->
+			<form method="GET" action="/search_poll">
+				<div class="input-group mb-3">
+					<input type="text" name="question" class="form-control" placeholder="Enter a poll question..." aria-label="Recipient's username">
+					<input type="text" name="categoryName" class="form-control" placeholder="Enter a poll category..." aria-label="Recipient's username">
+					<div class="input-group-append">
+						<input type="submit" value="Search" class="btn btn-outline-secondary" />
+					</div>
+				</div>	
+			</form>
 			
 			<!-- Polls list -->
 			<h1>All polls</h1>
@@ -31,12 +43,10 @@
 			
 			<!-- Pagination -->
 			<nav>
-				<ul class="pagination">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				<ul class="pagination" >
+					<li class="page-item" th:each="number: ${page_numbers}">
+						<a class="page-link" th:href="@{/} + ${number}" th:text="${number}"></a>
+					</li>
 				</ul>
 			</nav>
 		</div>

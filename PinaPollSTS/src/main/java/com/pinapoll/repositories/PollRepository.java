@@ -3,8 +3,11 @@ package com.pinapoll.repositories;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.pinapoll.models.Category;
@@ -18,17 +21,18 @@ public interface PollRepository extends JpaRepository<Poll, Integer> {
 	
 	List<Poll> findByUser(User user);
 	
-	List<Poll> findAll(); 
-	
+	Page<Poll> findAll(Pageable pageable); 
+		
 	List<Poll> findByIsPublic(boolean isPublic, Pageable pageable);
 	
 	List<Poll> findByCategory(Category category);
 	
-	List<Poll> findByQuestion(String question); // on pourrait faire que il contienne seulement le string, avec une query sql
+	List<Poll> findByQuestion(String question);
 	
-	// TODO :
+	@Query(value = "SELECT p.* FROM poll p, category c WHERE c.name = :categoryName AND c.id = p.category", nativeQuery = true)
+	List<Poll> findByCategoryName(@Param("categoryName")String categoryName);
 	
-	// find by title and maybe other
-	
+	@Query(value = "SELECT p.* FROM poll p, category c WHERE c.name = :categoryName AND c.id = p.category AND p.question = :question", nativeQuery = true)
+	List<Poll> findByQuestionCategory(String question, String categoryName);
 	
 }

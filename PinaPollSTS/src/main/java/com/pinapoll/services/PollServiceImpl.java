@@ -2,7 +2,10 @@ package com.pinapoll.services;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.pinapoll.models.Category;
@@ -56,8 +59,36 @@ public class PollServiceImpl implements PollService {
 	}
 
 	@Override
-	public List<Poll> getAll() {
-		return pollRepository.findAll();
+	public Page<Poll> getAll(Pageable pageable) {
+		return pollRepository.findAll(pageable);
+	}
+
+	@Override
+	public List<Poll> complexPollsSearch(String question, String categoryName) {
+		// TODO Auto-generated method stub
+
+    	System.out.println("question : " +  question + ", category : " + categoryName);
+//		if (question == "" && categoryName == "")
+		if (question.length() == 0 && categoryName.length() == 0)
+		{
+	    	System.out.println("both empty");
+			return null;
+		}
+		else if (question.length() != 0 && categoryName.length() != 0)
+		{
+	    	System.out.println("question : " +  question + ", category : " + categoryName);
+			return pollRepository.findByQuestionCategory(question, categoryName);
+		}
+		else if (question.length() != 0)
+		{
+	    	System.out.println("question : " +  question);
+			return pollRepository.findByQuestion(question);
+		}
+		else 
+		{
+	    	System.out.println("category : " + categoryName);
+			return pollRepository.findByCategoryName(categoryName);
+		}
 	}
 
 }

@@ -1,11 +1,21 @@
 package com.pinapoll.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import javax.naming.directory.SearchControls;
+
+import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,22 +33,39 @@ public class HomeController {
 	
 	@Autowired
 	private PollServiceImpl pollService;
-	
-	
-    
+	    
     @GetMapping("/")
     public ModelAndView home() {
-        
+    	return getPage(1);
+    }
+    
+    @GetMapping("/{page}")
+    public ModelAndView homeWithPage(@PathVariable("page") int page) {
+    	return getPage(page);
+    }
+    
+    private ModelAndView getPage(int page){
     	ModelAndView modelAndView = new ModelAndView();
-        List<Poll> polls = pollService.getAll();
+        Page<Poll> polls = pollService.getAll(PageRequest.of(page-1, 3));
+
+       	int totalPages = polls.getTotalPages();
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+            modelAndView.addObject("page_numbers", pageNumbers);
+        }
+        
         modelAndView.addObject("polls", polls);
         modelAndView.setViewName("index");
         return modelAndView;
     }
     
-    @GetMapping("/search")
-    public ModelAndView search(@RequestParam String name)
+    @GetMapping("/search_user")
+    public ModelAndView searchUser(@RequestParam String name)
     {
+    	if (name == "")
+    	{
+    		// TODO message erreur
+    	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<User> users = userService.searchUserWithName(name);
     	modelAndView.addObject("users", users);
@@ -46,7 +73,20 @@ public class HomeController {
     	return modelAndView;
     }
     
-    
+    @GetMapping("/search_poll")
+    public ModelAndView searchPoll(@RequestParam(defaultValue = "") String question, @RequestParam(defaultValue = "") String categoryName)
+    {
+    	if (question == "" && categoryName == "")
+    	{
+    		// TODO message erreur
+    	}
+    	ModelAndView modelAndView = new ModelAndView();
+    	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
+//    	System.out.println("RESULT : " + polls.get(0).getQuestion());
+    	modelAndView.addObject("polls", polls);
+        modelAndView.setViewName("index");
+    	return modelAndView;
+    }
     
     @GetMapping("/add")
     public String add(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {

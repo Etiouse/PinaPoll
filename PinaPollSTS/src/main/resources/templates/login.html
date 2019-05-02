@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Login</title>
-	</head>
-	
+	<head th:replace="fragments/head :: head"></head>
 	<body>
-		<div th:insert="fragments/header :: header"></div>
+		<nav th:replace="fragments/header :: header"></nav>
 		
 		<div class="container pt-3">
 			<form th:action="@{/login}" method="POST" class="form-signin col-md-8 offset-md-2">

@@ -1,45 +1,37 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org" th:fragment="header">
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <div>
-        <!-- this is header --> 
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand p-0 mt-2" href="/">
-            	<span class="text-warning">PinaPoll</span>
-				<img th:src="@{/favicon.png}" width="30px" height="30px" class="img-fluid pb-nav-logo mb-2" alt="PinaPoll"/>
-	        </a>
-	        <!-- Search Bar -->		
-	        <form method="GET" action="/search">
-				<div class="input-group mb-3">
-					<input type="text" name="name" class="form-control" placeholder="Enter a poll name..." aria-label="Recipient's username">
-					<div class="input-group-append">
-						<input type="submit" value="Search" class="btn btn-outline-secondary" />
-					</div>
-				</div>	
-			</form>
-			
-            <form class="form-inline">
-            
-                <!-- If not connected -->
-                <a th:href="@{/registration}" class="m-2 my-sm-0 text-warning" sec:authorize="!isAuthenticated()">Sign up</a>
-                <a th:href="@{/login}" class="btn btn-warning" sec:authorize="!isAuthenticated()">Login</a>
-                
-                <!-- If connected -->
-                    <!-- If not admin -->
-                    <a th:href="@{/user/} + ${#authentication.getPrincipal().getUsername()}" class="m-2 btn btn-warning my-sm-0" th:text="${#authentication.getPrincipal().getUsername()}" sec:authorize="isAuthenticated()"></a>
-                    <!-- If admin -->
-                    <!-- <button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button> -->
-                    
-                <a class="btn btn-danger my-2 my-sm-0" th:href="@{/logout}" sec:authorize="isAuthenticated()">
-                	<img th:src="@{/logout.png}" width="20px" height="20px" alt="Logout"/>
-				</a>
-            </form>
-        </nav>
-    </div>
-</body>
-</html>
+<nav class="navbar navbar-dark bg-dark" th:fragment="header">
+	<a class="navbar-brand p-0 mt-2" href="/"> <span
+		class="text-warning">PinaPoll</span> <img th:src="@{/images/favicon.png}"
+		width="30px" height="30px" class="img-fluid pb-nav-logo mb-2"
+		alt="PinaPoll" />
+	</a>
+	<!-- Search Bar -->
+	
+	<form class="form-inline" method="GET" action="/search_user">
+	    <input class="form-control mr-sm-2" type="text" name="name"placeholder="Enter an user name..." aria-label="Recipient's username">
+	    <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0" />
+	  </form>
+
+	<form class="form-inline">
+
+		<!-- If not connected -->
+		<a th:href="@{/registration}" class="m-2 my-sm-0 text-warning"
+			sec:authorize="!isAuthenticated()">Sign up</a> <a
+			th:href="@{/login}" class="btn btn-warning"
+			sec:authorize="!isAuthenticated()">Login</a>
+
+		<!-- If connected -->
+		<!-- If not admin -->
+		<a
+			th:href="@{/user/} + ${#authentication.getPrincipal().getUsername()}"
+			class="m-2 btn btn-warning my-sm-0"
+			th:text="${#authentication.getPrincipal().getUsername()}"
+			sec:authorize="isAuthenticated()"></a>
+		<!-- If admin -->
+		<!-- <button class="btn btn-warning m-2 my-sm-0" type="submit">Admin</button> -->
+
+		<a class="btn btn-danger my-2 my-sm-0" th:href="@{/logout}"
+			sec:authorize="isAuthenticated()"> <img th:src="@{/images/logout.png}"
+			width="20px" height="20px" alt="Logout" />
+		</a>
+	</form>
+</nav>
