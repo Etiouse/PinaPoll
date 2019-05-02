@@ -55,7 +55,7 @@ public class HomeController {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             modelAndView.addObject("page_numbers", pageNumbers);
         }
-                
+        
         modelAndView.addObject("user_search_result", false);
     	modelAndView.addObject("poll_search_result", false);
         modelAndView.addObject("polls", polls);

@@ -29,14 +29,16 @@ public class UserController {
     	ModelAndView modelAndView = new ModelAndView();
     	
     	User user = userService.findUserByName(name);
+    	User connected = userService.findUserByName(authentication.getName());
     	List<Poll> polls = pollService.getPollWithUser(user);
 
-    	boolean canCreate = authentication!=null && authentication.getName().equals(user.getName());
+    	boolean canCreate = authentication!=null && connected.getName().equals(user.getName());
+    	boolean canDelete = canCreate || connected.getActive() == 2;
     	
         modelAndView.addObject("user", user);
         modelAndView.addObject("polls", polls);
         modelAndView.addObject("can_create", canCreate);
-        modelAndView.addObject("can_delete", canCreate);
+        modelAndView.addObject("can_delete", canDelete);
         
         modelAndView.setViewName("profile");
         return modelAndView;
