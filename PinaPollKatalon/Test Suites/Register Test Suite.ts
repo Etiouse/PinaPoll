@@ -16,4 +16,10 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/Register Test Cases/Home</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>8ae1d0fa-2c32-4aa4-be17-2c8f77d79a26</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Register Test Cases/Register correct user</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>

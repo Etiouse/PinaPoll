@@ -28,8 +28,8 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.c
 
 
 
-RunConfiguration.setExecutionSettingFile("C:\\Dev\\INF3dlm-a\\Java Entreprise Edition\\workspace\\PinaPoll\\PinaPollKatalon\\Reports\\Register Test Suite\\20190502_225511\\execution.properties")
+RunConfiguration.setExecutionSettingFile("C:\\Dev\\INF3dlm-a\\Java Entreprise Edition\\workspace\\PinaPoll\\PinaPollKatalon\\Reports\\Register Test Suite\\20190503_004348\\execution.properties")
 
 TestCaseMain.beforeStart()
 
-TestCaseMain.startTestSuite('Test Suites/Register Test Suite', suiteProperties, [new TestCaseBinding('Test Cases/Register Test Cases/Register correct user', 'Test Cases/Register Test Cases/Register correct user',  null)])
+TestCaseMain.startTestSuite('Test Suites/Register Test Suite', suiteProperties, [new TestCaseBinding('Test Cases/Register Test Cases/Home', 'Test Cases/Register Test Cases/Home',  null), new TestCaseBinding('Test Cases/Register Test Cases/Register correct user', 'Test Cases/Register Test Cases/Register correct user',  null)])

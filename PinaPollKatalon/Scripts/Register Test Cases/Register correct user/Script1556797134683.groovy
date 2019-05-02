@@ -15,17 +15,17 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('http://localhost:8080/')
+WebUI.navigateToUrl('http://localhost:8080/registration')
 
-WebUI.click(findTestObject('Page_/a_Sign up'))
+WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_name (1)'), 'UserKatalon')
 
-WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_name'), 'KatalonUser')
+WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_email (1)'), 'user@katalon.ch')
 
-WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_email'), 'katalon@user.ch')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_/input_Registration Form_password (1)'), '4nvbrPglk7k=')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_/input_Registration Form_password'), '4nvbrPglk7k=')
+WebUI.click(findTestObject('Object Repository/Page_/button_Sign up (1)'))
 
-WebUI.click(findTestObject('Object Repository/Page_/button_Sign up'))
+WebUI.click(findTestObject('Object Repository/Page_/div_User has been registered successfully'))
 
 WebUI.closeBrowser()
 
