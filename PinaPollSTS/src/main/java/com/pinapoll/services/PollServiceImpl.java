@@ -2,6 +2,7 @@ package com.pinapoll.services;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,20 +65,25 @@ public class PollServiceImpl implements PollService {
 	public List<Poll> complexPollsSearch(String question, String categoryName) {
 		// TODO Auto-generated method stub
 		
-		if (question == "" && categoryName == "")
+//		if (question == "" && categoryName == "")
+		if (question.length() == 0 && categoryName.length() == 0)
 		{
+	    	System.out.println("both empty");
 			return null;
 		}
-		else if (question != "" && categoryName != "")
+		else if (question.length() != 0 && categoryName.length() != 0)
 		{
+	    	System.out.println("question : " +  question + ", category : " + categoryName);
 //			return pollRepository.getPollWithQuestionCategory(String question, categoryString category);
 		}
-		else if (question != "")
+		else if (question.length() != 0)
 		{
-//			return pollRepository.findByCategory(category);
+	    	System.out.println("question : " +  question);
+//			return pollRepository.findByCategoryName(categoryName);
 		}
 		else 
 		{
+	    	System.out.println("category : " + categoryName);
 			return pollRepository.findByQuestion(question);
 		}
 		return null;

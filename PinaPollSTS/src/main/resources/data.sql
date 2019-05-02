@@ -1,2 +1,7 @@
 INSERT IGNORE INTO `role` VALUES (1, 'USER')
 INSERT IGNORE INTO `role` VALUES (2, 'ADMIN')
+INSERT IGNORE INTO `category` (id, name) VALUES (1, 'life')
+INSERT IGNORE INTO `category` (id, name) VALUES (1, 'sport')
+INSERT IGNORE INTO `category` (id, name) VALUES (1, 'event')
+INSERT IGNORE INTO `category` (id, name) VALUES (1, 'game')
+INSERT IGNORE INTO `category` (id, name) VALUES (1, 'food')

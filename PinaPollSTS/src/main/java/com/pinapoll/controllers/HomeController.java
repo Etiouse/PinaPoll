@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.naming.directory.SearchControls;
 
+import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +46,10 @@ public class HomeController {
     @GetMapping("/search_user")
     public ModelAndView searchUser(@RequestParam String name)
     {
+    	if (name == "")
+    	{
+    		// TODO message erreur
+    	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<User> users = userService.searchUserWithName(name);
     	modelAndView.addObject("users", users);
@@ -53,8 +58,12 @@ public class HomeController {
     }
     
     @GetMapping("/search_poll")
-    public ModelAndView searchPoll(@RequestParam String question, @RequestParam String categoryName)
+    public ModelAndView searchPoll(@RequestParam(defaultValue = "") String question, @RequestParam(defaultValue = "") String categoryName)
     {
+    	if (question == "" && categoryName == "")
+    	{
+    		// TODO message erreur
+    	}
     	ModelAndView modelAndView = new ModelAndView();
     	List<Poll> polls = pollService.complexPollsSearch(question, categoryName);
     	modelAndView.addObject("polls", polls);
