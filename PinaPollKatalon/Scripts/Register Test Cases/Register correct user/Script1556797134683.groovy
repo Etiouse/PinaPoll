@@ -17,7 +17,7 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://localhost:8080/')
 
-WebUI.click(findTestObject('Object Repository/Page_/a_Sign up'))
+WebUI.click(findTestObject('Page_/a_Sign up'))
 
 WebUI.setText(findTestObject('Object Repository/Page_/input_Registration Form_name'), 'KatalonUser')
 

@@ -51,7 +51,8 @@
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:link</name>
-      <value>//a[contains(text(),'Sign up')]</value>
+      <value>/html/body/nav/form[2]/a[1]
+</value>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
