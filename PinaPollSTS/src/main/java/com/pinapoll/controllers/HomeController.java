@@ -55,7 +55,9 @@ public class HomeController {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             modelAndView.addObject("page_numbers", pageNumbers);
         }
-                
+        
+        //boolean isAdmin = 
+        
         modelAndView.addObject("polls", polls);
         modelAndView.setViewName("index");
         return modelAndView;
