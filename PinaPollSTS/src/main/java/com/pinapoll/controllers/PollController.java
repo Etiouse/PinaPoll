@@ -30,6 +30,7 @@ import com.pinapoll.models.Poll;
 import com.pinapoll.models.Response;
 import com.pinapoll.models.User;
 import com.pinapoll.models.UserResponse;
+import com.pinapoll.pojo.PollPojo;
 import com.pinapoll.services.CategoryServiceImpl;
 import com.pinapoll.services.PollServiceImpl;
 import com.pinapoll.services.ResponseServiceImpl;
@@ -60,17 +61,17 @@ public class PollController {
 
     	ModelAndView modelAndView = new ModelAndView();
         
-    	Poll poll = new Poll();
+    	PollPojo pollPojo = new PollPojo();
         List<Category> categories = categoryService.getAll();
         
-        modelAndView.addObject("poll", poll);
+        modelAndView.addObject("pollPojo", pollPojo);
         modelAndView.addObject("categories", categories);
         modelAndView.setViewName("poll-creation");
         return modelAndView;
     }
     
     @RequestMapping(value = "/poll/create", method = RequestMethod.POST)
-    public ModelAndView addFruits(@Valid Poll poll, BindingResult bindingResult, Authentication authentication, 
+    public ModelAndView addFruits(@Valid PollPojo pollPojo, BindingResult bindingResult, Authentication authentication, 
     							  @RequestParam("response") List<String> responses,
     							  @RequestParam("select_category") String value) {
       	
@@ -82,14 +83,14 @@ public class PollController {
         
         //modelAndView.addObject("categories", categories);
         
-        poll.setUser(user);
-        poll.setCategory(cat);
+        pollPojo.setUser(user);
+        pollPojo.setCategory(cat);
         
         int countResponse = 0;
         for(String resp : responses) { if(!resp.equals("")) countResponse++; }
         
         // Question controls
-        if (poll.getQuestion().equals("")) {
+        if (pollPojo.getQuestion().equals("")) {
         	bindingResult.rejectValue("question", "error.poll", "* You must enter a question");
         }
         
@@ -102,6 +103,12 @@ public class PollController {
         	System.err.println(bindingResult.getAllErrors().get(0).toString());
             modelAndView.setViewName("poll-creation");
         } else {
+        	Poll poll = new Poll();
+        	poll.setCategory(pollPojo.getCategory());
+        	poll.setQuestion(pollPojo.getQuestion());
+        	poll.setResponses(pollPojo.getResponses());
+        	poll.setUser(pollPojo.getUser());
+        	
             pollService.savePoll(poll);
             
             for(String resp : responses) {    	
