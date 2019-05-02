@@ -50,4 +50,9 @@ public class Category {
 		this.polls = polls;
 	}
 
+	@Override
+	public String toString() {
+		return getName();
+	}
+	
 }
