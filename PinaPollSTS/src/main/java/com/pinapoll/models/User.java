@@ -21,10 +21,11 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "user")
 public class User {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "user_id")
-    private Integer id;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "user_id")
+	private Integer id;
 
     @Column(name = "name")
     @NotEmpty(message = "*Please provide a name")
@@ -96,6 +97,10 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+	
+	public void addUserResponse(UserResponse userResponse) {
+		userResponses.add(userResponse);
 	}
 
 
