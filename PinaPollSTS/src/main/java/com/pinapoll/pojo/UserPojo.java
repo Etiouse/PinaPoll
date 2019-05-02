@@ -3,19 +3,6 @@ package com.pinapoll.pojo;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotEmpty;
-
-import com.pinapoll.models.Poll;
 import com.pinapoll.models.Role;
 import com.pinapoll.models.UserResponse;
 
@@ -30,8 +17,6 @@ public class UserPojo {
     private String email;
     
 	private int active;
-    
-	private List<Poll> polls;
     
 	private List<UserResponse> userResponses;
     
